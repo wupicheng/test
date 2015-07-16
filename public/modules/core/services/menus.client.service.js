@@ -161,6 +161,12 @@ angular.module('core').service('Menus', [
 		};
 
 		//Adding the topbar menu
-		this.addMenu('topbar');
+        this.addMenu('topbar');
+//       if(1===2){
+//
+//       }else{
+//           this.addMenu('topbar2');
+//       }
+
 	}
 ]);
