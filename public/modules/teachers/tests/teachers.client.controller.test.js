@@ -57,18 +57,18 @@
                 teacher_password: 'MEAN rocks!'
 			});
 
-			// Create a sample teachers array that includes the new teacher
+			// Create a sample exams array that includes the new teacher
 			var sampleTeachers = [sampleTeacher];
 
 			// Set GET response
-			$httpBackend.expectGET('teachers').respond(sampleTeachers);
+			$httpBackend.expectGET('exams').respond(sampleTeachers);
 
 			// Run controller functionality
 			scope.find();
 			$httpBackend.flush();
 
 			// Test scope value
-			expect(scope.teachers).toEqualData(sampleTeachers);
+			expect(scope.exams).toEqualData(sampleTeachers);
 		}));
 
 		it('$scope.findOne() should create an array with one teacher object fetched from XHR using a teacherId URL parameter', inject(function(Teachers) {
@@ -82,7 +82,7 @@
 			$stateParams.teacherId = '525a8422f6d0f87f0e407a33';
 
 			// Set GET response
-			$httpBackend.expectGET(/teachers\/([0-9a-fA-F]{24})$/).respond(sampleTeacher);
+			$httpBackend.expectGET(/exams\/([0-9a-fA-F]{24})$/).respond(sampleTeacher);
 
 			// Run controller functionality
 			scope.findOne();
@@ -111,7 +111,7 @@
 			scope.teacher_password = 'MEAN rocks!';
 
 			// Set POST response
-			$httpBackend.expectPOST('teachers', sampleTeacherPostData).respond(sampleTeacherResponse);
+			$httpBackend.expectPOST('exams', sampleTeacherPostData).respond(sampleTeacherResponse);
 
 			// Run controller functionality
 			scope.create();
@@ -122,7 +122,7 @@
 			expect(scope.content).toEqual('');
 
 			// Test URL redirection after the teacher was created
-			expect($location.path()).toBe('/teachers/' + sampleTeacherResponse._id);
+			expect($location.path()).toBe('/exams/' + sampleTeacherResponse._id);
 		}));
 
 		it('$scope.update() should update a valid teacher', inject(function(Teachers) {
@@ -137,14 +137,14 @@
 			scope.teacher = sampleTeacherPutData;
 
 			// Set PUT response
-			$httpBackend.expectPUT(/teachers\/([0-9a-fA-F]{24})$/).respond();
+			$httpBackend.expectPUT(/exams\/([0-9a-fA-F]{24})$/).respond();
 
 			// Run controller functionality
 			scope.update();
 			$httpBackend.flush();
 
 			// Test URL location to new object
-			expect($location.path()).toBe('/teachers/' + sampleTeacherPutData._id);
+			expect($location.path()).toBe('/exams/' + sampleTeacherPutData._id);
 		}));
 
 		it('$scope.remove() should send a DELETE request with a valid teacherId and remove the teacher from the scope', inject(function(Teachers) {
@@ -153,18 +153,18 @@
 				_id: '525a8422f6d0f87f0e407a33'
 			});
 
-			// Create new teachers array and include the teacher
-			scope.teachers = [sampleTeacher];
+			// Create new exams array and include the teacher
+			scope.exams = [sampleTeacher];
 
 			// Set expected DELETE response
-			$httpBackend.expectDELETE(/teachers\/([0-9a-fA-F]{24})$/).respond(204);
+			$httpBackend.expectDELETE(/exams\/([0-9a-fA-F]{24})$/).respond(204);
 
 			// Run controller functionality
 			scope.remove(sampleTeacher);
 			$httpBackend.flush();
 
 			// Test array after successful delete
-			expect(scope.teachers.length).toBe(0);
+			expect(scope.exams.length).toBe(0);
 		}));
 	});
 }());
