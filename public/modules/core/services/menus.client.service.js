@@ -5,13 +5,14 @@ angular.module('core').service('Menus', [
 
 	function() {
 		// Define a set of default roles
-		this.defaultRoles = ['*'];
+		this.defaultRoles = ['user','admin'];
 
 		// Define the menus object
 		this.menus = {};
 
 		// A private function for rendering decision 
 		var shouldRender = function(user) {
+            console.log(user.roles);
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
 					return true;
@@ -96,7 +97,7 @@ angular.module('core').service('Menus', [
 				items: [],
 				shouldRender: shouldRender
 			});
-
+             console.log(this.menus[menuId]);
 			// Return the menu object
 			return this.menus[menuId];
 		};
@@ -162,6 +163,7 @@ angular.module('core').service('Menus', [
 
 		//Adding the topbar menu
         this.addMenu('topbar');
+      //  this.addMenu('topbar2',true,'user');
 
 	}
 ]);
