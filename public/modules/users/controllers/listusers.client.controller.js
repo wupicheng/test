@@ -15,5 +15,11 @@ angular.module('users').controller('ListusersController', ['$scope', '$statePara
                 userId: $stateParams.userId
             });
         };
+        $scope.findOneByCondition = function() {
+            $scope.user = Users.get({
+                userName: $stateParams.userName
+            });
+        };
+
     }
 ]);
