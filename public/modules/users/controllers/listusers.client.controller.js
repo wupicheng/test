@@ -24,6 +24,9 @@ angular.module('users').controller('ListusersController', ['$scope', '$statePara
                 $scope.students = response;
             });
         };
+        $scope.change=function(){
+             $scope.users=Users.get({userName:$stateParams.userName});
+        };
 
     }
 ]);
