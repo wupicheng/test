@@ -24,6 +24,19 @@ exports.list = function(req, res) {
 		}
 	});
 };
+exports.listByUserName = function(req, res, next, username) {
+    //Exam.find().sort('-created').populate('user', 'displayName').exec(function(err, exams) {
+    //Exam.find().sort('-exam_name').exec(function(err, exams) {
+    User.find().where('username').equals(username).exec(function(err, users) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(users);
+        }
+    });
+};
 
 /**
  * exam middleware

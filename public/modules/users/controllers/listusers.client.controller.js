@@ -19,6 +19,10 @@ angular.module('users').controller('ListusersController', ['$scope', '$statePara
             $scope.user = Users.get({
                 userName: $stateParams.userName
             });
+           var url="/users/:"+$stateParams.userName;
+            $http.get(url).success( function(response) {
+                $scope.students = response;
+            });
         };
 
     }
