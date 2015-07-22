@@ -1,0 +1,20 @@
+<section data-ng-controller="DirectionsController" data-ng-init="find()">
+	<div class="page-header">
+		<h1>Directions</h1>
+	</div>
+	<div class="list-group">
+		<a data-ng-repeat="direction in directions" data-ng-href="#!/directions/{{direction._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="direction.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="direction.direction_name"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="direction.direction_name"></h4>
+			<p class="list-group-item-text" data-ng-bind="direction.direction_desc"></p>
+		</a>
+	</div>
+	<div class="alert alert-warning text-center" data-ng-if="directions.$resolved && !directions.length">
+		No directions yet, why don't you <a href="/#!/directions/create">create one</a>?
+	</div>
+</section>
