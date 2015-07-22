@@ -5,15 +5,18 @@ angular.module('directions').controller('DirectionsController', ['$scope', '$sta
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
+           // alert(this.direction_name);
 			var direction = new Directions({
-				title: this.title,
-				content: this.content
+                direction_name: this.direction_name,
+                direction_desc: this.direction_desc
+                //direction_created:this.direction_created
 			});
 			direction.$save(function(response) {
 				$location.path('directions/' + response._id);
 
-				$scope.title = '';
-				$scope.content = '';
+				$scope.direction_name = '';
+				$scope.direction_name = '';
+				$scope.direction_created = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

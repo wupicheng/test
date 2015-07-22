@@ -21,6 +21,7 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+            console.log(direction);
 			res.json(direction);
 		}
 	});

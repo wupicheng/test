@@ -1,20 +1,54 @@
 <section data-ng-controller="DirectionsController" data-ng-init="find()">
 	<div class="page-header">
-		<h1>Directions</h1>
+		<h1>所有专业方向</h1>
 	</div>
-	<div class="list-group">
-		<a data-ng-repeat="direction in directions" data-ng-href="#!/directions/{{direction._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="direction.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="direction.direction_name"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="direction.direction_name"></h4>
-			<p class="list-group-item-text" data-ng-bind="direction.direction_desc"></p>
-		</a>
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="directions.$resolved && !directions.length">
-		No directions yet, why don't you <a href="/#!/directions/create">create one</a>?
+
+	<!--<div class="list-group">-->
+		<!--<a data-ng-repeat="direction in directions" data-ng-href="#!/directions/{{direction._id}}" class="list-group-item">-->
+			<!--<small class="list-group-item-text">-->
+				<!--Posted on-->
+				<!--<span data-ng-bind="direction.created | date:'mediumDate'"></span>-->
+				<!--by-->
+				<!--<span data-ng-bind="direction.direction_name"></span>-->
+			<!--</small>-->
+			<!--<h4 class="list-group-item-heading" data-ng-bind="direction.direction_name"></h4>-->
+			<!--<p class="list-group-item-text" data-ng-bind="direction.direction_desc"></p>-->
+		<!--</a>-->
+	<!--</div>-->
+    <!--<div>-->
+
+        <hr>
+        <table class="table table-striped">
+            <caption></caption>
+            <thead>
+            <tr>
+                <th>专业名称</th>
+                <th>专业描述</th>
+                <th>创建时间</th>
+                <th>详细信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <a>
+                <tr class="active" data-ng-repeat="direction in directions">
+                    <td data-ng-bind="direction.direction_name"></td>
+                    <td data-ng-bind="direction.direction_desc"></td>
+                    <td data-ng-bind="direction.direction_created"></td>
+                    <td >
+                        <a class="btn btn-primary" href="/#!/directions/{{direction._id}}">
+                            <i class="glyphicon glyphicon-book"></i>
+                        </a>
+                    </td>
+                </tr>
+            </a>
+
+          </tbody>
+            </table>
+
+    </div>
+
+
+	<!--<div class="alert alert-warning text-center" data-ng-if="directions.$resolved && !directions.length">-->
+		<!--No directions yet, why don't you <a href="/#!/directions/create">create one</a>?-->
 	</div>
 </section>

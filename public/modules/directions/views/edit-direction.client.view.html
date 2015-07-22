@@ -1,26 +1,26 @@
 <section data-ng-controller="DirectionsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1>Edit Direction</h1>
+		<h1>编辑专业方向</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="directionForm" class="form-horizontal" data-ng-submit="update(directionForm.$valid)" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && directionForm.title.$invalid}">
-					<label class="control-label" for="title">Title</label>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && directionForm.direction_name.$invalid}">
+					<label class="control-label" for="direction_name">专业名称</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="direction.title" id="title" class="form-control" placeholder="Title" required>
+						<input name="direction_name" type="text" data-ng-model="direction.direction_name" id="direction_name" class="form-control" placeholder="Title" required>
 					</div>
-					<div ng-show="submitted && directionForm.title.$invalid" class="help-block">
-						<p ng-show="directionForm.title.$error.required" class="text-danger">Title is required</p>
+					<div ng-show="submitted && directionForm.direction_name.$invalid" class="help-block">
+						<p ng-show="directionForm.direction_name.$error.required" class="text-danger">Title is required</p>
 					</div>
 				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && directionForm.content.$invalid}">
-					<label class="control-label" for="content">Content</label>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && directionForm.direction_desc.$invalid}">
+					<label class="control-label" for="direction_desc">专业描述</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="direction.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+						<textarea name="direction_desc" data-ng-model="direction.direction_desc" id="direction_desc" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
 					</div>
-					<div ng-show="submitted && directionForm.content.$invalid" class="help-block">
-						<p ng-show="directionForm.content.$error.required" class="text-danger">Content is required</p>
+					<div ng-show="submitted && directionForm.direction_desc.$invalid" class="help-block">
+						<p ng-show="directionForm.direction_desc.$error.required" class="text-danger">Content is required</p>
 					</div>
 				</div>
 				<div class="form-group">

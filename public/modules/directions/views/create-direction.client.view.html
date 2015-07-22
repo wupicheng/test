@@ -1,20 +1,20 @@
 <section data-ng-controller="DirectionsController">
 	<div class="page-header">
-		<h1>New Direction</h1>
+		<h1>新建专业</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="directionForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error': directionForm.title.$dirty && directionForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
+				<div class="form-group" ng-class="{ 'has-error': directionForm.direction_name.$dirty && directionForm.direction_name.$invalid }">
+					<label class="control-label" for="direction_name">专业名称</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+						<input name="direction_name" type="text" data-ng-model="direction_name" id="direction_name" class="form-control" placeholder="专业名称" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
+					<label class="control-label" for="direction_desc">专业描述</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+						<textarea name="direction_desc" data-ng-model="direction_desc" id="direction_desc" class="form-control" cols="30" rows="10" placeholder="专业描述"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
