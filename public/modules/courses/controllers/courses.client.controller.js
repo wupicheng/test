@@ -1,19 +1,20 @@
 'use strict';
 
-angular.module('courses').controller('CoursesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Courses',
-	function($scope, $stateParams, $location, Authentication, Courses) {
+angular.module('courses').controller('CoursesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Courses','Directions',
+	function($scope, $stateParams, $location, Authentication, Courses,Directions) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
 			var course = new Courses({
-				title: this.title,
-				content: this.content
+                course_name: this.course_name,
+                course_desc: this.course_desc,
+                direction:this.direction
 			});
 			course.$save(function(response) {
 				$location.path('courses/' + response._id);
 
-				$scope.title = '';
-				$scope.content = '';
+				$scope.course_name = '';
+				$scope.course_desc = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -48,7 +49,9 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 		$scope.find = function() {
 			$scope.courses = Courses.query();
 		};
-
+        $scope.initdirection = function() {
+            $scope.directions = Directions.query();
+        };
 		$scope.findOne = function() {
 			$scope.course = Courses.get({
 				courseId: $stateParams.courseId

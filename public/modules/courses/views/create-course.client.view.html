@@ -1,20 +1,28 @@
-<section data-ng-controller="CoursesController">
+<section data-ng-controller="CoursesController" data-ng-init="initdirection()">
 	<div class="page-header">
 		<h1>New Course</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="courseForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error': courseForm.title.$dirty && courseForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
+                <div class="form-group">
+                    <label class="control-label" for="direction">选择专业</label>
+                    <div class="controls">
+                        <select ng-model="direction" id="direction" ng-options="direction.direction_name for direction in directions">
+
+                        </select>
+                    </div>
+                </div>
+				<div class="form-group" ng-class="{ 'has-error': courseForm.course_name.$dirty && courseForm.course_name.$invalid }">
+					<label class="control-label" for="course_name">课程名称</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+						<input name="course_name" type="text" data-ng-model="course_name" id="course_name" class="form-control" placeholder="课程名称" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
+					<label class="control-label" for="course_desc">课程简介</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+						<textarea name="course_desc" data-ng-model="course_desc" id="course_desc" class="form-control" cols="30" rows="10" placeholder="课程简介"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
