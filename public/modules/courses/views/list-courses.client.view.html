@@ -1,19 +1,52 @@
 <section data-ng-controller="CoursesController" data-ng-init="find()">
 	<div class="page-header">
-		<h1>Courses</h1>
+		<h1>所有课程</h1>
 	</div>
-	<div class="list-group">
-		<a data-ng-repeat="course in courses" data-ng-href="#!/courses/{{course._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="course.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="course.course_name"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="course.course_name"></h4>
-			<p class="list-group-item-text" data-ng-bind="course.course_desc"></p>
-		</a>
-	</div>
+	<!--<div class="list-group">-->
+		<!--<a data-ng-repeat="course in courses" data-ng-href="#!/courses/{{course._id}}" class="list-group-item">-->
+			<!--<small class="list-group-item-text">-->
+				<!--Posted on-->
+				<!--<span data-ng-bind="course.created | date:'mediumDate'"></span>-->
+				<!--by-->
+				<!--<span data-ng-bind="course.course_name"></span>-->
+			<!--</small>-->
+			<!--<h4 class="list-group-item-heading" data-ng-bind="course.course_name"></h4>-->
+			<!--<p class="list-group-item-text" data-ng-bind="course.course_desc"></p>-->
+		<!--</a>-->
+	<!--</div>-->
+    <table class="table table-striped">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th>课程名称</th>
+            <th>课程描述</th>
+            <th>所属专业</th>
+            <th>创建时间</th>
+            <th>编辑</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <a>
+            <tr class="active" data-ng-repeat="course in courses">
+                <td data-ng-bind="course.course_name"></td>
+                <td data-ng-bind="course.course_desc"></td>
+                <td data-ng-bind="course.direction.direction_name"></td>
+                <td data-ng-bind="course.course_created"></td>
+
+                <td >
+                    <a class="btn btn-primary" href="/#!/directions/{{course._id}}">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        </a>
+
+        </tbody>
+    </table>
+
+
+
 	<div class="alert alert-warning text-center" data-ng-if="courses.$resolved && !courses.length">
 		No courses yet, why don't you <a href="/#!/courses/create">create one</a>?
 	</div>

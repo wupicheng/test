@@ -76,7 +76,7 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
     //Course.find().sort('-created').populate('user', 'displayName').exec(function(err, courses) {
     //Course.find().sort('-course_name').exec(function(err, courses) {
-    Course.find().exec(function(err, courses) {
+    Course.find().populate('direction', 'direction_name').exec(function(err, courses) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -91,8 +91,8 @@ exports.list = function(req, res) {
  * course middleware
  */
 exports.courseByID = function(req, res, next, id) {
-	//Course.findById(id).populate('user', 'displayName').exec(function(err, article) {
-	Course.findById(id).exec(function(err, course) {
+	Course.findById(id).populate('direction', 'direction_name').exec(function(err, course) {
+	//Course.findById(id).exec(function(err, course) {
 		if (err) return next(err);
 		if (!course) return next(new Error('Failed to load course ' + id));
 		req.course = course;
