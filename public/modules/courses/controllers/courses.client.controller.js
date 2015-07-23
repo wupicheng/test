@@ -54,10 +54,24 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
         $scope.initdirection = function() {
             $scope.directions = Directions.query();
         };
+        $scope.direction_init = function() {
+            //alert( $scope.course.direction.ObjectId);
+
+                    $scope.m = $scope.course.direction;
+
+
+
+        };
 		$scope.findOne = function() {
+            $scope.initdirection();
 			$scope.course = Courses.get({
 				courseId: $stateParams.courseId
 			});
+//            for (var i in $scope.directions) {
+//                if ($scope.directions[i]._id === $scope.course.direction._id) {
+//                    $scope.direction = $scope.directions[i];
+//                }
+//            }
 		};
 	}
 ]);

@@ -5,22 +5,30 @@
 	<div class="col-md-12">
 		<form name="courseForm" class="form-horizontal" data-ng-submit="update(courseForm.$valid)" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && courseForm.title.$invalid}">
-					<label class="control-label" for="title">Title</label>
+                <div class="form-group">
+                    <label class="control-label" for="direction">选择专业</label>
+                    <div class="controls">
+                        <select ng-model="m" id="direction"  ng-init="direction_init()" ng-options="direction.direction_name for direction in directions">
+
+                        </select>
+                    </div>
+                </div>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && courseForm.course_name.$invalid}">
+					<label class="control-label" for="course_name">课程名称</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="course.title" id="title" class="form-control" placeholder="Title" required>
+						<input name="course_name" type="text" data-ng-model="course.course_name" id="course_name" class="form-control" placeholder="Title" required>
 					</div>
-					<div ng-show="submitted && courseForm.title.$invalid" class="help-block">
-						<p ng-show="courseForm.title.$error.required" class="text-danger">Title is required</p>
+					<div ng-show="submitted && courseForm.course_name.$invalid" class="help-block">
+						<p ng-show="courseForm.course_name.$error.required" class="text-danger">名称不能为空</p>
 					</div>
 				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && courseForm.content.$invalid}">
-					<label class="control-label" for="content">Content</label>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && courseForm.course_desc.$invalid}">
+					<label class="control-label" for="course_desc">Content</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="course.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+						<textarea name="course_desc" data-ng-model="course.course_desc" id="course_desc" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
 					</div>
-					<div ng-show="submitted && courseForm.content.$invalid" class="help-block">
-						<p ng-show="courseForm.content.$error.required" class="text-danger">Content is required</p>
+					<div ng-show="submitted && courseForm.course_desc.$invalid" class="help-block">
+						<p ng-show="courseForm.course_desc.$error.required" class="text-danger">Content is required</p>
 					</div>
 				</div>
 				<div class="form-group">

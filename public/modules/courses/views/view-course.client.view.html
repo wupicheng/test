@@ -43,10 +43,14 @@
                 <td data-ng-bind="course.course_created"></td>
 
                 <td >
-                    <a class="btn btn-primary" href="/#!/directions/{{course._id}}">
+                    <a class="btn btn-primary" href="/#!/courses/{{course._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
                     </a>
+                    <a class="btn btn-primary" href="/#!/courses/{{course._id}}/delete">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
                 </td>
+
             </tr>
         </a>
 
