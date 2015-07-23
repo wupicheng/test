@@ -8,8 +8,10 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 			var course = new Courses({
                 course_name: this.course_name,
                 course_desc: this.course_desc,
-                direction:this.direction
+                course_created:Date.now,
+               direction : this.direction._id
 			});
+           // req.direction=this.direction;
 			course.$save(function(response) {
 				$location.path('courses/' + response._id);
 
