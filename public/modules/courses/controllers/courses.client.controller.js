@@ -53,25 +53,46 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 		};
         $scope.initdirection = function() {
             $scope.directions = Directions.query();
+
         };
         $scope.direction_init = function() {
             //alert( $scope.course.direction.ObjectId);
 
-                    $scope.m = $scope.course.direction;
+                   // $scope.m =$scope.directions[0];
 
+
+
+
+
+            //console.log( $scope.directions);
 
 
         };
+
 		$scope.findOne = function() {
-            $scope.initdirection();
+
 			$scope.course = Courses.get({
 				courseId: $stateParams.courseId
-			});
-//            for (var i in $scope.directions) {
-//                if ($scope.directions[i]._id === $scope.course.direction._id) {
-//                    $scope.direction = $scope.directions[i];
-//                }
-//            }
+			},function(data){
+                $scope.directions = Directions.query(function(){
+                    for(var i in  $scope.directions){
+
+                        if( data.direction._id== $scope.directions[i]._id){
+
+                            $scope.m=$scope.directions[i];
+                        }
+                    }
+
+                    //alert('m'+$scope.m);
+                });
+
+            });
+
+
+
+
+           // $scope.m =$scope.directions[0];
+            //alert('m2='+$scope.m);
 		};
 	}
 ]);
