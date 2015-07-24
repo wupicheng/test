@@ -40,7 +40,7 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 
 		$scope.update = function() {
 			var course = $scope.course;
-
+                course.direction=this.direction._id
 			course.$update(function() {
 				$location.path('courses/' + course._id);
 			}, function(errorResponse) {
@@ -56,16 +56,6 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 
         };
         $scope.direction_init = function() {
-            //alert( $scope.course.direction.ObjectId);
-
-                   // $scope.m =$scope.directions[0];
-
-
-
-
-
-            //console.log( $scope.directions);
-
 
         };
 
@@ -79,20 +69,14 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 
                         if( data.direction._id== $scope.directions[i]._id){
 
-                            $scope.m=$scope.directions[i];
+                            $scope.direction=$scope.directions[i];
                         }
                     }
 
-                    //alert('m'+$scope.m);
                 });
 
             });
 
-
-
-
-           // $scope.m =$scope.directions[0];
-            //alert('m2='+$scope.m);
 		};
 	}
 ]);

@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label class="control-label" for="mm">选择专业</label>
                     <div class="controls">
-                        <select ng-model="m"    id="mm"   ng-options="direction.direction_name for direction in directions"></select>
+                        <select ng-model="direction"    id="mm"   ng-options="direction.direction_name for direction in directions"></select>
                     </div>
                 </div>
 				<div class="form-group" ng-class="{ 'has-error' : submitted && courseForm.course_name.$invalid}">
