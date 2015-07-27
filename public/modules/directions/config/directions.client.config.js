@@ -10,5 +10,7 @@ angular.module('directions').run(['Menus',
 		Menus.addSubMenuItem('topbar', 'basemenus', '添加专业方向', 'directions/create');
         Menus.addSubMenuItem('topbar', 'basemenus', '所有课程', 'courses');
         Menus.addSubMenuItem('topbar', 'basemenus', '添加课程', 'courses/create');
+       // Menus.addSubMenuItem('topbar', 'basemenus', '所有知识点', 'points');
+       // Menus.addSubMenuItem('topbar', 'basemenus', '添加知识点', 'points/create');
 	}
 ]);
