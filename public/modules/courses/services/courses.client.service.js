@@ -12,3 +12,9 @@ angular.module('courses').factory('Courses', ['$resource',
 		});
 	}
 ]);
+angular.module('courses').factory('Courses2', ['$resource',
+    function($resource) {
+        return $resource('courses/:directionId'
+        );
+    }
+]);

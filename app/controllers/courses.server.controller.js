@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 	_ = require('lodash');
 
 /**
- * Create a article
+ * Create a course
  */
 exports.create = function(req, res) {
 	var course = new Course(req.body);
@@ -74,17 +74,34 @@ exports.delete = function(req, res) {
  * List of Course
  */
 exports.list = function(req, res) {
-    //Course.find().sort('-created').populate('user', 'displayName').exec(function(err, courses) {
-    //Course.find().sort('-course_name').exec(function(err, courses) {
-    Course.find().populate('direction', 'direction_name').exec(function(err, courses) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(courses);
-		}
-	});
+    if(req.query.flag==='q2'){
+        console.log('listssss='+req.query.directionId);
+        Course.find({'direction':req.query.directionId}).exec(function(err, courses) {
+            //Course.find({'course_name':'JDK'}).exec(function(err, courses) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json(courses);
+            }
+        });
+
+    }else{
+        console.log('list='+req.query.directionId);
+        //Course.find().sort('-created').populate('user', 'displayName').exec(function(err, courses) {
+        //Course.find().sort('-course_name').exec(function(err, courses) {
+        Course.find().populate('direction', 'direction_name').exec(function(err, courses) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json(courses);
+            }
+        });
+    }
+
 };
 
 /**
@@ -99,6 +116,26 @@ exports.courseByID = function(req, res, next, id) {
 		next();
 	});
 };
+
+exports.lists=function(req,res){
+   // Course.find({'course_name':req.query.userName}).exec(function(err, courses) {
+    console.log('listssss='+req.query.directionId);
+    //Course.find({'direction':req.query.directionId}).exec(function(err, courses) {
+    Course.find({'course_name':'JDK'}).exec(function(err, courses) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(courses);
+        }
+    });
+};
+
+
+
+
+
 
 /**
  * Article authorization middleware

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('points').controller('PointsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Points',
-	function($scope, $stateParams, $location, Authentication, Points) {
+angular.module('points').controller('PointsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Points','Directions','Courses','Courses2',
+	function($scope, $stateParams, $location, Authentication, Points,Directions,Courses,Courses2) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -57,5 +57,17 @@ angular.module('points').controller('PointsController', ['$scope', '$stateParams
 				pointId: $stateParams.pointId
 			});
 		};
+        $scope.change=function(){
+            //alert('sss');
+            $scope.courses=Courses.query({directionId:$scope.direction._id,flag:'q2'});
+            //$scope.courses=Courses2.query({directionId:$scope.direction._id,flag:'q2'});
+
+        };
+
+        $scope.initdirection = function() {
+            $scope.directions = Directions.query();
+
+        };
+
 	}
 ]);
