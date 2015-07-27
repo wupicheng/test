@@ -40,7 +40,7 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 
 		$scope.update = function() {
 			var course = $scope.course;
-                course.direction=this.direction._id
+                course.direction=this.direction._id;
 			course.$update(function() {
 				$location.path('courses/' + course._id);
 			}, function(errorResponse) {
