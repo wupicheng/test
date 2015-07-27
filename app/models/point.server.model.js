@@ -10,15 +10,15 @@ var mongoose = require('mongoose'),
  * 知识点对象实体
  */
 var PointSchema = new Schema({
-    course_name: {
+    point_name: {
 		type: String,
 		default: ''
 	},
-    course_desc: {
+    point_desc: {
 		type: String,
 		default: ''
     },
-    course_created: {
+    point_created: {
 		type: Date,
         default: Date.now,
 		trim: true

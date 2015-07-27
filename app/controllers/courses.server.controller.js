@@ -75,7 +75,7 @@ exports.delete = function(req, res) {
  */
 exports.list = function(req, res) {
     if(req.query.flag==='q2'){
-        console.log('listssss='+req.query.directionId);
+        console.log(';;;;;;;;;;;;;;;;;;;;;;listssss='+req.query.directionId);
         Course.find({'direction':req.query.directionId}).exec(function(err, courses) {
             //Course.find({'course_name':'JDK'}).exec(function(err, courses) {
             if (err) {
@@ -119,7 +119,7 @@ exports.courseByID = function(req, res, next, id) {
 
 exports.lists=function(req,res){
    // Course.find({'course_name':req.query.userName}).exec(function(err, courses) {
-    console.log('listssss='+req.query.directionId);
+    console.error(';;;;;;;;;;;;;;;;;;;;;listssss='+req.query.directionId);
     //Course.find({'direction':req.query.directionId}).exec(function(err, courses) {
     Course.find({'course_name':'JDK'}).exec(function(err, courses) {
         if (err) {

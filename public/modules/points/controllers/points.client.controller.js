@@ -8,7 +8,9 @@ angular.module('points').controller('PointsController', ['$scope', '$stateParams
            // alert(this.point_name);
 			var point = new Points({
                 point_name: this.point_name,
-                point_desc: this.point_desc
+                point_desc: this.point_desc,
+                point_created:Date.now,
+                course : this.course._id
                 //point_created:this.point_created
 			});
 			point.$save(function(response) {
