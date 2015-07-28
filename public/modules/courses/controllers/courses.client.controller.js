@@ -67,7 +67,7 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
                 $scope.directions = Directions.query(function(){
                     for(var i in  $scope.directions){
 
-                        if( data.direction._id== $scope.directions[i]._id){
+                        if( data.direction._id=== $scope.directions[i]._id){
 
                             $scope.direction=$scope.directions[i];
                         }

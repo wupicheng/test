@@ -1,0 +1,55 @@
+<section data-ng-controller="PointsController" data-ng-init="find()">
+	<div class="page-header">
+		<h1>所有专业方向</h1>
+	</div>
+
+	<!--<div class="list-group">-->
+		<!--<a data-ng-repeat="point in points" data-ng-href="#!/points/{{point._id}}" class="list-group-item">-->
+			<!--<small class="list-group-item-text">-->
+				<!--Posted on-->
+				<!--<span data-ng-bind="point.created | date:'mediumDate'"></span>-->
+				<!--by-->
+				<!--<span data-ng-bind="point.point_name"></span>-->
+			<!--</small>-->
+			<!--<h4 class="list-group-item-heading" data-ng-bind="point.point_name"></h4>-->
+			<!--<p class="list-group-item-text" data-ng-bind="point.point_desc"></p>-->
+		<!--</a>-->
+	<!--</div>-->
+    <!--<div>-->
+
+        <hr>
+        <table class="table table-striped">
+            <caption></caption>
+            <thead>
+            <tr>
+                <th>知识点名称</th>
+                <th>知识点描述</th>
+                <th>创建时间</th>
+                <th>所属课程</th>
+                <th>详细信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <a>
+                <tr class="active" data-ng-repeat="point in points">
+                    <td data-ng-bind="point.point_name"></td>
+                    <td data-ng-bind="point.point_desc"></td>
+                    <td data-ng-bind="point.point_created"></td>
+                    <td >
+                        <a class="btn btn-primary" href="/#!/points/{{point._id}}">
+                            <i class="glyphicon glyphicon-book"></i>
+                        </a>
+                    </td>
+                </tr>
+            </a>
+
+          </tbody>
+            </table>
+
+    </div>
+
+
+	<!--<div class="alert alert-warning text-center" data-ng-if="points.$resolved && !points.length">-->
+		<!--No points yet, why don't you <a href="/#!/points/create">create one</a>?-->
+	</div>
+</section>

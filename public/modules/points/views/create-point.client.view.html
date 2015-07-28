@@ -1,0 +1,47 @@
+<section data-ng-controller="PointsController" data-ng-init="initdirection()">
+	<div class="page-header">
+		<h1>新建知识点</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="pointForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+			<fieldset>
+
+                <div class="form-group">
+                    <label class="control-label" for="direction">选择专业</label>
+                    <div class="controls">
+                        <select ng-model="direction"  ng-change="change()"    id="direction" ng-options="direction.direction_name for direction in directions">
+                            <option value="">选择专业</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="courses">选择课程</label>
+                    <div class="controls">
+                        <select ng-model="course"    id="courses" ng-options="course.course_name for course in courses">
+                            <option value="">请选择课程</option>
+                        </select>
+                    </div>
+                </div>
+
+				<div class="form-group" ng-class="{ 'has-error': pointForm.point_name.$dirty && pointForm.point_name.$invalid }">
+					<label class="control-label" for="point_name">知识点名称</label>
+					<div class="controls">
+						<input name="point_name" type="text" data-ng-model="point_name" id="point_name" class="form-control" placeholder="专业名称" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="point_desc">知识点描述</label>
+					<div class="controls">
+						<textarea name="point_desc" data-ng-model="point_desc" id="point_desc" class="form-control" cols="30" rows="10" placeholder="专业描述"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

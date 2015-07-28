@@ -1,0 +1,49 @@
+<section data-ng-controller="PointsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="point.point_name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id ==authentication.user._id">
+		<a class="btn btn-primary" href="/#!/points/{{point._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+
+    <table class="table table-striped">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th>知识点名称</th>
+            <th>知识点描述</th>
+            <th>所属课程</th>
+            <th>所属专业</th>
+            <th>编辑</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <a>
+            <tr class="active" >
+                <td data-ng-bind="point.point_name"></td>
+                <td data-ng-bind="point.point_desc"></td>
+                <td data-ng-bind="point.course.course_name"></td>
+                <td ></td>
+                <td data-ng-bind="point.course_created"></td>
+
+                <td >
+                    <a class="btn btn-primary" href="/#!/courses/{{course._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn btn-primary" data-ng-click="remove();">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </td>
+
+            </tr>
+        </a>
+
+        </tbody>
+    </table>
+</section>

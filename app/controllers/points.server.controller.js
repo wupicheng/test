@@ -92,7 +92,7 @@ exports.list = function(req, res) {
  */
 exports.pointByID = function(req, res, next, id) {
 	//Point.findById(id).populate('user', 'displayName').exec(function(err, article) {
-	Point.findById(id).exec(function(err, point) {
+	Point.findById(id).populate('course', 'course_name').exec(function(err, point) {
 		if (err) return next(err);
 		if (!point) return next(new Error('Failed to load point ' + id));
 		req.point = point;
