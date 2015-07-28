@@ -76,7 +76,7 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
     //Point.find().sort('-created').populate('user', 'displayName').exec(function(err, points) {
     //Point.find().sort('-point_name').exec(function(err, points) {
-    Point.find().exec(function(err, points) {
+    Point.find().populate('course', 'course_name').exec(function(err, points) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

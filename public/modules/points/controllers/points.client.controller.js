@@ -59,6 +59,24 @@ angular.module('points').controller('PointsController', ['$scope', '$stateParams
 				pointId: $stateParams.pointId
 			});
 		};
+        $scope.findOneEdit = function() {
+            $scope.directions = Directions.query();
+            $scope.point = Points.get({
+                pointId: $stateParams.pointId
+            },function(){
+                $scope.directions = Directions.query(function(){
+                    for(var i in  $scope.directions){
+
+                        if( data.direction._id=== $scope.directions[i]._id){
+
+                            $scope.direction=$scope.directions[i];
+                        }
+                    }
+
+                });
+
+            });
+        };
         $scope.change=function(){
             //alert('sss');
             $scope.courses=Courses.query({directionId:$scope.direction._id,flag:'q2'});
