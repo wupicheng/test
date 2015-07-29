@@ -76,22 +76,7 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
     //Point.find().sort('-created').populate('user', 'displayName').exec(function(err, points) {
     //Point.find().sort('-point_name').exec(function(err, points) {
-
-    if(req.query.flag==='q3'){
-        console.log(';;;;;;;;;;;;;;;;;;;;;;listssss='+req.query.courseId);
-        Point.find({'course':req.query.courseId}).exec(function(err, points) {
-            //Course.find({'course_name':'JDK'}).exec(function(err, courses) {
-            if (err) {
-                return res.status(400).send({
-                    message: errorHandler.getErrorMessage(err)
-                });
-            } else {
-                res.json(points);
-            }
-        });
-
-    }else{
-       Point.find().populate('course').exec(function(err, points) {
+    Point.find().populate('course').exec(function(err, points) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -100,7 +85,6 @@ exports.list = function(req, res) {
 			res.json(points);
 		}
 	});
-    }
 };
 
 /**

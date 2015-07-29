@@ -64,10 +64,22 @@ angular.module('points').controller('PointsController', ['$scope', '$stateParams
             $scope.point = Points.get({
                 pointId: $stateParams.pointId
             },function(){
+                $scope.courses = Courses.query({directionId:$scope.point.course.direction,flag:'q2'},function(){
+                    for(var i in  $scope.courses){
+
+                        if( $scope.point.course._id=== $scope.courses[i]._id){
+
+                            $scope.course=$scope.courses[i];
+                        }
+                    }
+                });
+
+
                 $scope.directions = Directions.query(function(){
+                    //alert( 'from points client controller...$scope.point.course.direction='+JSON.stringify($scope.point.course));
                     for(var i in  $scope.directions){
 
-                        if( data.direction._id=== $scope.directions[i]._id){
+                        if( $scope.point.course.direction=== $scope.directions[i]._id){
 
                             $scope.direction=$scope.directions[i];
                         }

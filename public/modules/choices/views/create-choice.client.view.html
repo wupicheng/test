@@ -1,0 +1,37 @@
+<section data-ng-controller="ChoicesController" data-ng-init="initdirection()">
+	<div class="page-header">
+		<h1>New Choice</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="choiceForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+			<fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="direction">选择专业</label>
+                    <div class="controls">
+                        <select ng-model="direction"    id="direction" ng-options="direction.direction_name for direction in directions">
+                           <option value="">选择专业</option>
+                        </select>
+                    </div>
+                </div>
+				<div class="form-group" ng-class="{ 'has-error': choiceForm.choice_name.$dirty && choiceForm.choice_name.$invalid }">
+					<label class="control-label" for="choice_name">课程名称</label>
+					<div class="controls">
+						<input name="choice_name" type="text" data-ng-model="choice_name" id="choice_name" class="form-control" placeholder="课程名称" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="choice_desc">课程简介</label>
+					<div class="controls">
+						<textarea name="choice_desc" data-ng-model="choice_desc" id="choice_desc" class="form-control" cols="30" rows="10" placeholder="课程简介"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

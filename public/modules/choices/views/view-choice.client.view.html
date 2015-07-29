@@ -1,0 +1,59 @@
+<section data-ng-controller="ChoicesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="choice.title"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == choice.user._id">
+		<a class="btn btn-primary" href="/#!/choices/{{choice._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<!--<small>-->
+		<!--<em class="text-muted">-->
+			<!--|创建时间：<span data-ng-bind="choice.choice_created | date:'mediumDate'"></span>-->
+            <!--&lt;!&ndash;|<span data-ng-bind="choice.user.displayName"></span>&ndash;&gt;-->
+            <!--|专业名称：<span data-ng-bind="choice.direction.direction_name"></span>-->
+            <!--|课程名称：<span data-ng-bind="choice.choice_name"></span>-->
+		<!--</em>-->
+	<!--</small>-->
+
+
+	<p class="lead" data-ng-bind="choice.content"></p>
+
+    <table class="table table-striped">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th>课程名称</th>
+            <th>课程描述</th>
+            <th>所属专业</th>
+            <th>创建时间</th>
+            <th>编辑</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <a>
+            <tr class="active" >
+                <td data-ng-bind="choice.choice_name"></td>
+                <td data-ng-bind="choice.choice_desc"></td>
+                <td data-ng-bind="choice.direction.direction_name"></td>
+                <td data-ng-bind="choice.choice_created"></td>
+
+                <td >
+                    <a class="btn btn-primary" href="/#!/choices/{{choice._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn btn-primary" data-ng-click="remove();">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </td>
+
+            </tr>
+        </a>
+
+        </tbody>
+    </table>
+</section>
