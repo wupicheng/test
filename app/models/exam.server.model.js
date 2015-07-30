@@ -10,21 +10,36 @@ var mongoose = require('mongoose'),
  * Exam Schema
  */
 var ExamSchema = new Schema({
-	teacher_name: {
+	exam_name: {//试卷的名称 比如（ F17班2015年 期中考试）
 		type: String,
 		default: ''
 	},
-	teacher_password: {
+	exam_group: { //参加考试的分组。可以是班级 比如 F17 设定后只有F17 班可以参加考试
 		type: String,
 		default: '',
 		trim: true,
-		required: 'password cannot be blank'
+		required: ''
 	},
-	teacher_birthday: {
+    exam_time:{//考试时间计算 从点击考试到结束考试的 时间段计时
+        type: String,
+        default: '0'
+    },
+	exam_startDate: {//开始考试时间 限定这个考试什么时候能被学生看到 这样学生就可以开始考试
 		type: Date,
         default: Date.now,
 		trim: true
-	}
+    },
+    exam_endDate: {//结束考试时间 限定这个考试必须在什么时间完成。过了这个时间 这个试卷将作废
+        type: Date,
+        default: Date.now,
+        trim: true
+    },
+    exam_questions:{
+        type: [{
+            type: Schema.ObjectId,
+            ref: 'Question'
+        }]
+    }
 
 });
 

@@ -5,97 +5,97 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-    Point = mongoose.model('Point'),
+    Question = mongoose.model('Question'),
 	_ = require('lodash');
 
 /**
  * Create a article
  */
 exports.create = function(req, res) {
-	var point = new Point(req.body);
+	var question = new Question(req.body);
 
 
-    point.save(function(err) {
+    question.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-            console.log(point);
-			res.json(point);
+            console.log(question);
+			res.json(question);
 		}
 	});
 };
 
 /**
- * Show the current point
+ * Show the current question
  */
 exports.read = function(req, res) {
-	res.json(req.point);
+	res.json(req.question);
 };
 
 /**
- * Update a point
+ * Update a question
  */
 exports.update = function(req, res) {
-	var point = req.point;
+	var question = req.question;
 
-    point = _.extend(point, req.body);
+    question = _.extend(question, req.body);
 
-    point.save(function(err) {
+    question.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(point);
+			res.json(question);
 		}
 	});
 };
 
 /**
- * Delete an point
+ * Delete an question
  */
 exports.delete = function(req, res) {
-	var point = req.point;
+	var question = req.question;
 
-    point.remove(function(err) {
+    question.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(point);
+			res.json(question);
 		}
 	});
 };
 
 /**
- * List of Point
+ * List of Question
  */
 exports.list = function(req, res) {
-    //Point.find().sort('-created').populate('user', 'displayName').exec(function(err, points) {
-    //Point.find().sort('-point_name').exec(function(err, points) {
-    Point.find().populate('course').exec(function(err, points) {
+    //Question.find().sort('-created').populate('user', 'displayName').exec(function(err, questions) {
+    //Question.find().sort('-question_name').exec(function(err, questions) {
+    Question.find().populate('point').exec(function(err, questions) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(points);
+			res.json(questions);
 		}
 	});
 };
 
 /**
- * point middleware
+ * question middleware
  */
-exports.pointByID = function(req, res, next, id) {
-	//Point.findById(id).populate('user', 'displayName').exec(function(err, article) {
-	Point.findById(id).populate('course').exec(function(err, point) {
+exports.questionByID = function(req, res, next, id) {
+	//Question.findById(id).populate('user', 'displayName').exec(function(err, article) {
+	Question.findById(id).populate('course').exec(function(err, question) {
 		if (err) return next(err);
-		if (!point) return next(new Error('Failed to load point ' + id));
-		req.point = point;
+		if (!question) return next(new Error('Failed to load question ' + id));
+		req.question = question;
 		next();
 	});
 };
@@ -104,7 +104,7 @@ exports.pointByID = function(req, res, next, id) {
  * Article authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-//	if (req.point.user.id !== req.user.id) {
+//	if (req.question.user.id !== req.user.id) {
 //		return res.status(403).send({
 //			message: 'User is not authorized'
 //		});

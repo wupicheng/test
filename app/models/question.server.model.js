@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * 知识点对象实体
  */
 var QuestionSchema = new Schema({
-    question_titile: { //试题题目
+    question_title: { //试题题目
 		type: String,
 		default: ''
 	},

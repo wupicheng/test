@@ -4,19 +4,19 @@
  * Module dependencies.
  */
 var users = require('../../app/controllers/users.server.controller'),
-	points = require('../../app/controllers/points.server.controller');
+	questions = require('../../app/controllers/questions.server.controller');
 
 module.exports = function(app) {
 	// Article Routes
-	app.route('/points')
-		.get(points.list)
-		.post(users.requiresLogin, points.create);
+	app.route('/questions')
+		.get(questions.list)
+		.post(users.requiresLogin, questions.create);
 
-	app.route('/points/:pointId')
-		.get(points.read)
-		.put(users.requiresLogin, points.hasAuthorization, points.update)
-		.delete(users.requiresLogin, points.hasAuthorization, points.delete);
+	app.route('/questions/:questionId')
+		.get(questions.read)
+		.put(users.requiresLogin, questions.hasAuthorization, questions.update)
+		.delete(users.requiresLogin, questions.hasAuthorization, questions.delete);
 
-	// Finish by binding the point middleware
-	app.param('pointId', points.pointByID);
+	// Finish by binding the question middleware
+	app.param('questionId', questions.questionByID);
 };

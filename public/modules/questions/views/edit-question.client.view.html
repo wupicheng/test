@@ -1,44 +1,58 @@
-<section data-ng-controller="PointsController" data-ng-init="findOneEdit()">
+<section data-ng-controller="QuestionsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1>编辑知识点</h1>
+		<h1>编辑题目</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="questionForm" class="form-horizontal" data-ng-submit="update(questionForm.$valid)" novalidate>
 			<fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="direction">选择专业</label>
-                    <div class="controls">
-                        <select ng-model="direction"  ng-change="change()"    id="direction" ng-options="direction.direction_name for direction in directions">
-                            <option value="">选择专业</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="courses">选择课程</label>
-                    <div class="controls">
-                        <select ng-model="course"    id="courses" ng-options="course.course_name for course in courses">
-                            <option value="">请选择课程</option>
-                        </select>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="direction">选择专业</label>-->
+                    <!--<div class="controls">-->
+                        <!--<select ng-model="direction"  ng-change="change()"    id="direction" ng-options="direction.direction_name for direction in directions">-->
+                            <!--<option value="">选择专业</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="courses">选择课程</label>-->
+                    <!--<div class="controls">-->
+                        <!--<select ng-model="course"    id="courses" ng-options="course.course_name for course in courses">-->
+                            <!--<option value="">请选择课程</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
 				<div class="form-group" ng-class="{ 'has-error' : submitted && questionForm.question_name.$invalid}">
-					<label class="control-label" for="question_name">知识点名称</label>
+					<label class="control-label" for="question_title">试题题干</label>
 					<div class="controls">
-						<input name="question_name" type="text" data-ng-model="question.question_name" id="question_name" class="form-control" placeholder="Title" required>
+						<input name="question_title" type="text" data-ng-model="question.question_title" id="question_title" class="form-control" placeholder="Title" required>
 					</div>
 					<div ng-show="submitted && questionForm.question_name.$invalid" class="help-block">
 						<p ng-show="questionForm.question_name.$error.required" class="text-danger">Title is required</p>
 					</div>
 				</div>
 				<div class="form-group" ng-class="{ 'has-error' : submitted && questionForm.question_desc.$invalid}">
-					<label class="control-label" for="question_desc">知识点描述</label>
-					<div class="controls">
-						<textarea name="question_desc" data-ng-model="question.question_desc" id="question_desc" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
-					</div>
-					<div ng-show="submitted && questionForm.question_desc.$invalid" class="help-block">
-						<p ng-show="questionForm.question_desc.$error.required" class="text-danger">Content is required</p>
-					</div>
+					<label class="control-label" for="question_choices">试题选项</label>
+                    <div class="controls">
+                        <div class="list-group" id="question_choices">
+                            <div class="list-column"  data-ng-repeat="choice in question.question_choices" >
+                                <!--<span>{{choice.title}}</span>-->
+                                <input type="text" class="form-inline" cols="20" ng-model="choice.title"  >
+                                <input type="checkbox"  ng-checked="choice.istrue" cols="10" ng-model="choice.istrue">
+                            </div>
+
+                        </div>
+                    </div>
 				</div>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && questionForm.question_desc.$invalid}">
+                    <label class="control-label" for="question_answer">试题答案</label>
+                    <div class="controls">
+                        <textarea name="question_answer" data-ng-model="question.question_answer" id="question_answer" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+                    </div>
+                    <div ng-show="submitted && questionForm.question_desc.$invalid" class="help-block">
+                        <p ng-show="questionForm.question_desc.$error.required" class="text-danger">Content is required</p>
+                    </div>
+                </div>
+
 				<div class="form-group">
 					<input type="submit" value="Update" class="btn btn-default">
 				</div>

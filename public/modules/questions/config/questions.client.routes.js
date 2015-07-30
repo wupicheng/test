@@ -13,6 +13,10 @@ angular.module('questions').config(['$stateProvider',
 			url: '/questions/create',
 			templateUrl: 'modules/questions/views/create-question.client.view.html'
 		}).
+        state('batchQuestion', {
+                url: '/questions/batch',
+                templateUrl: 'modules/questions/views/batch-question.client.view.html'
+            }).
 		state('viewQuestion', {
 			url: '/questions/:questionId',
 			templateUrl: 'modules/questions/views/view-question.client.view.html'

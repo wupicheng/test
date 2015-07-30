@@ -1,0 +1,28 @@
+<section data-ng-controller="QuestionsController" data-ng-init="findBatch()">
+	<div class="page-header">
+
+	</div>
+
+    <div class="content">
+      <textarea class="form-control" rows="10"  ng-model="textContent">
+
+      </textarea>
+
+      <input type="button" class="btn" ng-click="check()" value="识别">
+
+    </div>
+
+    <div class="" id="question_title">
+        题目：<input class="content form-control" ng-model="question.question_title" />
+    </div>
+    <div class="list-group" id="question_choices">
+        <div class="list-column" data-ng-repeat="choice in question.question_choices">
+            <!--<span>{{choice.title}}</span>-->
+            <input type="checkbox"  ng-checked="choice.istrue"
+                   ng-model="choice.istrue">
+            <input type="text" class="form-control" cols="20" ng-model="choice.title"/>
+
+        </div>
+
+    </div>
+</section>

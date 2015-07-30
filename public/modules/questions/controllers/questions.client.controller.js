@@ -2,88 +2,88 @@
 
 angular.module('questions').controller('QuestionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Questions','Directions','Courses','Points','Choices',
 	function($scope, $stateParams, $location, Authentication, Questions,Directions,Courses,Points,Choices) {
-		$scope.authentication = Authentication;
+        $scope.authentication = Authentication;
 
-		$scope.create = function() {
-           // alert(this.question_name);
-			var question = new Questions({
+        $scope.create = function () {
+            // alert(this.question_name);
+            var question = new Questions({
                 question_title: this.question_title,
                 question_desc: this.question_desc,
-                question_created:Date.now,
-                question_choices:this.question_choices,
-                question_answer:this.question_answer,
-                point : this.point._id
+                question_created: Date.now,
+                question_choices: this.question_choices,
+                question_answer: this.question_answer,
+                point: this.point._id
                 //question_created:this.question_created
-			});
-			question.$save(function(response) {
-				$location.path('questions/' + response._id);
+            });
+            question.$save(function (response) {
+                $location.path('questions/' + response._id);
 
-				$scope.question_title = '';
-				$scope.question_answer = '';
-				$scope.question_created = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
+                $scope.question_title = '';
+                $scope.question_answer = '';
+                $scope.question_created = '';
+            }, function (errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
 
-		$scope.remove = function(question) {
-			if (question) {
-				question.$remove();
+        $scope.remove = function (question) {
+            if (question) {
+                question.$remove();
 
-				for (var i in $scope.questions) {
-					if ($scope.questions[i] === question) {
-						$scope.questions.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.question.$remove(function() {
-					$location.path('questions');
-				});
-			}
-		};
+                for (var i in $scope.questions) {
+                    if ($scope.questions[i] === question) {
+                        $scope.questions.splice(i, 1);
+                    }
+                }
+            } else {
+                $scope.question.$remove(function () {
+                    $location.path('questions');
+                });
+            }
+        };
 
-		$scope.update = function() {
-			var question = $scope.question;
+        $scope.update = function () {
+            var question = $scope.question;
 
-			question.$update(function() {
-				$location.path('questions/' + question._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
+            question.$update(function () {
+                $location.path('questions/' + question._id);
+            }, function (errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
 
-		$scope.find = function() {
-			$scope.questions = Questions.query();
-		};
+        $scope.find = function () {
+            $scope.questions = Questions.query();
+        };
 
-		$scope.findOne = function() {
-			$scope.question = Questions.get({
-				questionId: $stateParams.questionId
-			});
-		};
-        $scope.findOneEdit = function() {
+        $scope.findOne = function () {
+            $scope.question = Questions.get({
+                questionId: $stateParams.questionId
+            });
+        };
+        $scope.findOneEdit = function () {
             $scope.directions = Directions.query();
             $scope.question = Questions.get({
                 questionId: $stateParams.questionId
-            },function(){
-                $scope.courses = Courses.query({directionId:$scope.question.course.direction,flag:'q2'},function(){
-                    for(var i in  $scope.courses){
+            }, function () {
+                $scope.courses = Courses.query({directionId: $scope.question.course.direction, flag: 'q2'}, function () {
+                    for (var i in  $scope.courses) {
 
-                        if( $scope.question.course._id=== $scope.courses[i]._id){
+                        if ($scope.question.course._id === $scope.courses[i]._id) {
 
-                            $scope.course=$scope.courses[i];
+                            $scope.course = $scope.courses[i];
                         }
                     }
                 });
 
 
-                $scope.directions = Directions.query(function(){
+                $scope.directions = Directions.query(function () {
                     //alert( 'from questions client controller...$scope.question.course.direction='+JSON.stringify($scope.question.course));
-                    for(var i in  $scope.directions){
+                    for (var i in  $scope.directions) {
 
-                        if( $scope.question.course.direction=== $scope.directions[i]._id){
+                        if ($scope.question.course.direction === $scope.directions[i]._id) {
 
-                            $scope.direction=$scope.directions[i];
+                            $scope.direction = $scope.directions[i];
                         }
                     }
 
@@ -91,27 +91,27 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
 
             });
         };
-        $scope.changeDirection=function(){
+        $scope.changeDirection = function () {
             //alert('sss');
-            $scope.courses=Courses.query({directionId:$scope.direction._id,flag:'q2'});
+            $scope.courses = Courses.query({directionId: $scope.direction._id, flag: 'q2'});
             //$scope.courses=Courses2.query({directionId:$scope.direction._id,flag:'q2'});
 
         };
-        $scope.changeCourse=function(){
-            alert('changeCourse');
-            $scope.points=Points.query({courseId:$scope.course._id,flag:'q3'});
+        $scope.changeCourse = function () {
+            //alert('changeCourse');
+            $scope.points = Points.query({courseId: $scope.course._id, flag: 'q3'});
             //$scope.courses=Courses2.query({directionId:$scope.direction._id,flag:'q2'});
 
         };
 
-        $scope.initdirection = function() {
+        $scope.initdirection = function () {
             $scope.directions = Directions.query();
-            $scope.question_choices=new Array();
+            $scope.question_choices = new Array();
 
         };
-        $scope.addchoice=function(){
+        $scope.addchoice = function () {
             //choice.title=this.choice_title;
-            var choice={title:this.choice_title,istrue:true};
+            var choice = {title: this.choice_title, istrue: false};
 
 //          var  choice.title=this.choice_title;
 //            choice.istrue='';
@@ -123,5 +123,34 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
             //alert($scope.question_choices);
         };
 
-	}
+        $scope.xx = function () {
+            alert(JSON.stringify($scope.question_choices));
+
+        };
+        $scope.dowork = function (value) {
+            return  String.fromCharCode(value);
+        };
+        $scope.check = function () {
+            var o = $scope.textContent;
+            var arrays = o.split('\n');
+            //alert(arrays);
+            var choices = new Array();
+            for (var n = 1; n < arrays.length; n++) {
+                choices.push({title: arrays[n], istrue: false});
+            }
+
+            var questionnew = new Questions({
+                question_title: arrays[0],
+                question_choices: choices
+
+            });
+            $scope.question=questionnew;
+
+        };
+        $scope.batch=function(){
+
+            $scope.question=new Questions();
+        };
+
+    }
 ]);

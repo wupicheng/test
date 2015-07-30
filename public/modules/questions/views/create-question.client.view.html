@@ -52,11 +52,14 @@
 					<label class="control-label" for="question_choices">试题选项</label>
                     <input type="text" ng-model="choice_title"   class="form-control">
                     <input type="button" ng-click="addchoice()" class="btn"  value="添加">
+                    <!--<input type="button" ng-click="xx()" class="btn"  value="打印">-->
+
 					<div class="controls">
                         <div class="list-group" id="question_choices">
                              <div class="list-column"  data-ng-repeat="choice in question_choices" >
-                                 <input type="text" class="btn-block" cols="20" data-ng-bind="choice.title">
-                                 <input type="checkbox" class="btn-block" cols="10" data-ng-bind="choice.istrue">
+                                 <!--<span>{{choice.title}}</span>-->
+                                 <input type="text" class="form-inline" cols="20" ng-model="choice.title"  >
+                                 <input type="checkbox"  ng-checked="choice.istrue" cols="10" ng-model="choice.istrue">
                              </div>
 
                         </div>
