@@ -41,6 +41,21 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
                 });
             }
         };
+        $scope.removeBatchOne = function (questionId) {
+            if (questionId) {
+                Questions.remove({questionId:questionId,flag:'d2'});
+
+                for (var i in $scope.questions) {
+                    if ($scope.questions[i]._id === questionId) {
+                        $scope.questions.splice(i, 1);
+                    }
+                }
+            } else {
+                $scope.question.$remove(function () {
+                    $location.path('questions');
+                });
+            }
+        };
 
         $scope.update = function () {
             var question = $scope.question;
@@ -91,6 +106,13 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
 
             });
         };
+        $scope.findBatch=function(){
+
+            $scope.question=new Questions();
+            $scope.question.question_choices=new Array();
+            $scope.question.question_title='';
+            $scope.question.question_type='OC';
+        };
         $scope.changeDirection = function () {
             //alert('sss');
             $scope.courses = Courses.query({directionId: $scope.direction._id, flag: 'q2'});
@@ -119,7 +141,7 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
 //                choice_title:this.choice_title,
 //                chaoice_num:this.question_choices.length+1
 //            });
-            $scope.question_choices.push(choice);
+            $scope.question.question_choices.push(choice);
             //alert($scope.question_choices);
         };
 
@@ -150,6 +172,34 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
         $scope.batch=function(){
 
             $scope.question=new Questions();
+        };
+
+        $scope.addQuestion=function(){
+           alert( $scope.question.question_type);
+            var question = new Questions({
+                question_title: $scope.question.question_title,
+                question_desc: $scope.question.question_desc,
+                question_created: Date.now,
+                question_choices: $scope.question.question_choices,
+                question_answer: $scope.question.question_answer,
+                question_type:$scope.question.question_type
+                //point: this.point._id
+                //question_created:this.question_created
+            });
+            question.$save(function (response) {
+                $location.path('/questions/batch');
+
+                $scope.question.question_title = '';
+                $scope.question.question_answer = '';
+                $scope.question.question_created = '';
+                $scope.question.question_choices=new Array();
+                $scope.question.question_title='';
+                $scope.question.question_type='OC';
+                $scope.textContent='';
+            }, function (errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+
         };
 
     }

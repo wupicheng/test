@@ -57,17 +57,32 @@ exports.update = function(req, res) {
  * Delete an question
  */
 exports.delete = function(req, res) {
-	var question = req.question;
+    if(req.query.flag==='d2'){
+        Question.remove({_id:req.query.questionId},function(err) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json(question);
+            }
+            }
+        );
 
-    question.remove(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(question);
-		}
-	});
+    }else{
+        var question = req.question;
+
+        question.remove(function(err) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json(question);
+            }
+        });
+    }
+
 };
 
 /**

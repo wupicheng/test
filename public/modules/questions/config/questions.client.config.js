@@ -8,7 +8,8 @@ angular.module('questions').run(['Menus',
         Menus.addMenuItem('topbar', '试题管理', 'questionmenus', 'dropdown', '/questions(/create)?',false,['admin']);
         Menus.addSubMenuItem('topbar', 'questionmenus', '所有试题', 'questions');
         Menus.addSubMenuItem('topbar', 'questionmenus', '添加试题', 'questions/create');
-        Menus.addSubMenuItem('topbar', 'questionmenus', '批量导入试题', 'questions/batch');
+        Menus.addSubMenuItem('topbar', 'questionmenus', '批量导入选择题', 'questions/batch');
+
 
 
     }
