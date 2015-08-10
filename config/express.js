@@ -42,7 +42,11 @@ module.exports = function(db) {
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
-		res.locals.url = req.protocol + '://' + req.headers.host + req.url;
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE,OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
+
+        res.locals.url = req.protocol + '://' + req.headers.host + req.url;
 		next();
 	});
 

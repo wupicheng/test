@@ -34,7 +34,28 @@ exports.list2 = function(req, res) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
+            res.header('Access-Control-Allow-Origin', '*');
             res.json(users);
+
+        }
+    });
+};
+
+exports.createx = function(req, res) {
+    console.log('listusers controller create x...');
+    var user = new User(req.body);
+
+    console.log(user);
+    user.save(function(err) {
+        res.header('Access-Control-Allow-Origin', '*');
+        return  res.json(user);
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+
+            res.json(user);
         }
     });
 };
