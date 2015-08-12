@@ -11,7 +11,7 @@ angular.module('directions').run(['Menus',
         Menus.addSubMenuItem('topbar', 'basemenus', '', '####',3,false);
         Menus.addSubMenuItem('topbar', 'basemenus', '所有课程', 'courses',4);
         Menus.addSubMenuItem('topbar', 'basemenus', '添加课程', 'courses/create',5);
-        Menus.addSubMenuItem('topbar', 'basemenus',      '',          '####',  6,false);
+        Menus.addSubMenuItem('topbar', 'basemenus',      '',          '####',  6,false);//菜单分组分隔栏 false输出分隔符
         Menus.addSubMenuItem('topbar', 'basemenus', '所有知识点', 'points',7);
         Menus.addSubMenuItem('topbar', 'basemenus', '添加知识点', 'points/create',8);
 	}

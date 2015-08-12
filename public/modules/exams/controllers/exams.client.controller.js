@@ -55,5 +55,10 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
 				examId: $stateParams.examId
 			});
 		};
+
+        $scope.change_group_type=function(){
+
+
+        };
 	}
 ]);

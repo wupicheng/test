@@ -6,8 +6,9 @@ angular.module('groups').controller('GroupsController', ['$scope', '$stateParams
 
 		$scope.create = function() {
 			var group = new Groups({
-				title: this.title,
-				content: this.content
+				group_name: this.group_name,
+				group_desc: this.group_desc,
+                group_type:this.group_type
 			});
 			group.$save(function(response) {
 				$location.path('groups/' + response._id);
