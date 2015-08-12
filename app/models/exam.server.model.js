@@ -20,6 +20,10 @@ var ExamSchema = new Schema({
 		trim: true,
 		required: ''
 	},
+    exam_group_type:{//分组类型，比如按年级分组 或者班级分组 专业分组 等等，用来确定哪些类型的分组可以参加考试
+        type: String,
+        default: ''
+    },
     exam_time:{//考试时间计算 从点击考试到结束考试的 时间段计时
         type: String,
         default: '0'

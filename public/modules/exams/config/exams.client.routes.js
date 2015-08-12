@@ -17,6 +17,14 @@ angular.module('exams').config(['$stateProvider',
                 url: '/exams/examisdone',
                 templateUrl: 'modules/exams/views/list-isdone-exams.client.view.html'
             }).
+         state('manuExamCreate', {   //手工试卷生成功能
+                url: '/exams/manuexamcreate',
+                templateUrl: 'modules/exams/views/manual-create-exam.client.view.html'
+            }).
+            state('robotExamCreate', {   //手工试卷生成功能
+                url: '/exams/robotexamcreate',
+                templateUrl: 'modules/exams/views/robot-create-exam.client.view.html'
+            }).
 		state('createExam', {
 			url: '/exams/create',
 			templateUrl: 'modules/exams/views/create-exam.client.view.html'
