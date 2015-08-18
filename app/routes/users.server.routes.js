@@ -14,6 +14,8 @@ module.exports = function(app) {
 	app.route('/users').put(users.update);
     //app.route('/users/:userName').get(users.list2);
 	app.route('/users').get(users.list);
+	app.route('/users/:userId').get(users.userByID2);
+    app.route('/users/:userId').put(users.update);
 	app.route('/api/users/list2').get(users.list2);
 	app.route('/api/users/list2').post(users.createx);
 	//app.route('/api/users/list2').option(users.createx);

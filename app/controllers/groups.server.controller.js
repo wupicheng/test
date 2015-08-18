@@ -73,15 +73,31 @@ exports.delete = function(req, res) {
  * List of Groups
  */
 exports.list = function(req, res) {
-	Group.find().sort('-created').populate('user', 'displayName').exec(function(err, groups) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(groups);
-		}
-	});
+
+    if(req.query.flag==='query_by_group_type'){
+        console.log('groups.server.controller.js ....list '+req.query.group_type);
+        Group.find({'group_type':req.query.group_type}).exec(function(err, groups) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json(groups);
+            }
+        });
+    }else{
+        Group.find().sort('-created').populate('user', 'displayName').exec(function(err, groups) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json(groups);
+            }
+        });
+    }
+
+
 };
 
 exports.listByCondition = function(req, res) {

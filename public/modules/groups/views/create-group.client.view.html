@@ -8,20 +8,20 @@
                 <div class="form-group">
                     <label class="control-label" for="group_type">选择分组类型</label>
                     <div class="controls">
-                        <select id="group_type"  ng-model="group_type"   ng-change="change_group_type()"  name="group_type" data-ng-model="group_type">
-                            <option value="NJ_GROUP" ng-selected="true">年级分组</option>
-                            <option value="ZY_GROUP">专业分组</option>
-                            <option value="BJ_GROUP">班级分组</option>
-                            <option value="JS_GROUP">教师分组</option>
+                        <select  name="group_type" data-ng-model="group_type"  id="group_type"  ng-change="change_group_type()"  >
+                            <option  ng-selected="true">请选择分组</option>
+                            <option value="年级分组" >年级分组</option>
+                            <option value="班级分组">班级分组</option>
+                            <option value="教师分组">教师分组</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="group_type">已有分组</label>
+                    <label class="control-label" >已有分组</label>
                     <div class="controls">
                         <ul class="list-group">
                             <li class="list-group-item"   ng-repeat="group in groups">
-                                {{group.group_name}}}
+                                <span data-ng-bind="group.group_name"></span>
                             </li>
 
                         </ul>
@@ -30,11 +30,17 @@
                 </div>
 
 				<div class="form-group">
-					<label class="control-label" for="content">输入分组</label>
+					<label class="control-label" for="group_name">输入分组</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="content" id="content" class="form-control"  placeholder="Content"></textarea>
+						<input name="group_name" data-ng-model="group_name" id="group_name" class="form-control"  placeholder="Content" />
 					</div>
 				</div>
+                <div class="form-group">
+                    <label class="control-label" for="group_desc">分组描述</label>
+                    <div class="controls">
+                        <input name="group_desc" data-ng-model="group_desc" id="group_desc" class="form-control"  placeholder="Content" />
+                    </div>
+                </div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-default" value="添加分组">
 				</div>

@@ -17,18 +17,18 @@ var GroupSchema = new Schema({
 	group_type: { //分组类型
 		type: String,
 		default: '',
-		trim: true,
-		required: ''
+		trim: true
+
 	},
-    create_date:{//分组数据入库时间（时间戳）
+    group_created:{//分组数据入库时间（时间戳）
         type: Date,
         default: Date.now
     },
     group_desc:{//分组的描述
         type: String,
         default: '',
-        trim: true,
-        required: ''
+        trim: true
+
     }
 
 });

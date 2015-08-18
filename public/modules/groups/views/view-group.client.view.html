@@ -10,13 +10,10 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="group.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="group.user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="group.content"></p>
+
+    <ul class="list-group">
+        <li class="list-group-item" data-ng-bind="'分组名称：'+group.group_name"></li>
+        <li class="list-group-item" data-ng-bind="'分组类型：'+group.group_type"></li>
+        <li class="list-group-item" data-ng-bind="'分组创建时间：'+group.group_created"></li>
+    </ul>
 </section>

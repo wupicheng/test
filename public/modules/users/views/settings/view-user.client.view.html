@@ -1,23 +1,40 @@
-<section data-ng-controller="ListusersController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="user.username"></h1>
-	</div>
-	<!--<div class="pull-right" data-ng-show="authentication.user._id == teacher.user._id">-->
-	<div class="pull-right" >
-		<a class="btn btn-primary" href="/#!/users/{{user._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="user.username "></span>
-			by
-			<span data-ng-bind="user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="user.password"></p>
+<section data-ng-controller="ListusersController" data-ng-init="findOne2()">
+    <div class="page-header">
+        <h1 data-ng-bind="user2.username"></h1>
+    </div>
+    <!--<div class="pull-right" data-ng-show="authentication.user._id == teacher.user._id">-->
+    <div class="pull-right">
+        <a class="btn btn-primary" href="/#!/users/{{user._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">用户名
+        </div>
+        <div class="col-sm-8" data-ng-bind="user2.username">
+            <span ></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">角色和分组
+        </div>
+        <div class="col-sm-6" >
+
+            <span ng-repeat="role in user2.roles">
+
+                <a class="btn btn-danger" ng-click="removeGroup(role)">删除 【{{role}}】分组</a>
+            </span>
+        </div>
+        <div class="col-sm-4" >
+            <button class="btn btn-default"  ng-click="editGroups()" >添加分组</button>
+        </div>
+    </div>
+
+
+
+
 </section>

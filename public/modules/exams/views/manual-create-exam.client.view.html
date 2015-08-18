@@ -5,44 +5,15 @@
 	<div class="col-md-12">
 		<form name="examForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="exam_group_type">选择考试分组类型</label>
-                    <div class="controls">
-                        <select id="exam_group_type" name="exam_group_type" data-ng-model="exam_group_type">
-                            <option value="NJ_GROUP" ng-selected="true">年级分组</option>
-                            <option value="ZY_GROUP">专业分组</option>
-                            <option value="BJ_GROUP">班级分组</option>
-                            <option value="JS_GROUP">教师分组</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="exam_group_type">选择考试分组</label>
-                    <div class="controls">
-                        <select id="exam_group" name="exam_group" data-ng-model="exam_group">
-                            <option value="NJ_GROUP" ng-selected="true">年级分组</option>
-                            <option value="ZY_GROUP">专业分组</option>
-                            <option value="BJ_GROUP">班级分组</option>
-                            <option value="JS_GROUP">教师分组</option>
-                        </select>
-                    </div>
-                </div>
-
-
 				<div class="form-group" ng-class="{ 'has-error': examForm.exam_name.$dirty && examForm.exam_name.$invalid }">
-					<label class="control-label" for="exam_name">学生姓名</label>
+					<label class="control-label" for="exam_name">试卷名称</label>
 					<div class="controls">
 						<input name="exam_name" type="text" data-ng-model="exam_name" id="exam_name" class="form-control" placeholder="姓名" required>
 					</div>
 				</div>
+
 				<div class="form-group">
-					<label class="control-label" for="exam_password">密码</label>
-					<div class="controls">
-						<textarea name="exam_password" data-ng-model="exam_password" id="exam_password" class="form-control" cols="30" rows="10" placeholder="密码"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-default">
+					<input type="submit" class="btn btn-default" value="保存试卷">
 				</div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>

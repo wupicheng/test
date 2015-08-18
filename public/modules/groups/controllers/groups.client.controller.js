@@ -8,13 +8,15 @@ angular.module('groups').controller('GroupsController', ['$scope', '$stateParams
 			var group = new Groups({
 				group_name: this.group_name,
 				group_desc: this.group_desc,
-                group_type:this.group_type
+                group_type: $scope.group_type
 			});
+            console.log(group);
+            //console.log($scope);
 			group.$save(function(response) {
 				$location.path('groups/' + response._id);
 
-				$scope.title = '';
-				$scope.content = '';
+				$scope.group_name = '';
+				$scope.group_desc = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -55,5 +57,9 @@ angular.module('groups').controller('GroupsController', ['$scope', '$stateParams
 				groupId: $stateParams.groupId
 			});
 		};
+        $scope.change_group_type=function(){
+            $scope.groups=Groups.query({'group_type':$scope.group_type,'flag':'query_by_group_type'});
+
+        };
 	}
 ]);
