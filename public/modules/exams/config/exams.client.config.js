@@ -14,7 +14,9 @@ angular.module('exams').run(['Menus',
 
         Menus.addMenuItem('topbar', '试卷管理', 'examsmanage', 'dropdown', '/exams(/create)?',false,['admin']);
         //Menus.addSubMenuItem('topbar', 'exams', '未完成考试', 'exams');
+        Menus.addSubMenuItem('topbar', 'examsmanage', '所有试卷', 'exams');
         Menus.addSubMenuItem('topbar', 'examsmanage', '手工试卷管理', 'exams/manuexamcreate');
         Menus.addSubMenuItem('topbar', 'examsmanage', '随机抽卷管理', 'exams/robotexamcreate');
+
 	}
 ]);

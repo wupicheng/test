@@ -41,7 +41,7 @@ angular.module('users').controller('ListusersController', ['$scope','$rootScope'
         };
         $scope.editGroups = function () {
            // $rootScope.theme = 'ngdialog-theme-plain custom-width';
-            $scope.xx="ssss";
+            $scope.xx='ssss';
             console.log($scope);
             ngDialog.open({
                 template: 'modules/users/views/settings/list-user-group-dialog.view.html',

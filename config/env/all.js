@@ -18,12 +18,18 @@ module.exports = {
 				'public/lib/ngDialog/ngDialog.min.css',
                 'public/lib/ngDialog/ngDialog-theme-default.min.css',
                 'public/lib/ngDialog/ngDialog-theme-plain.min.css',
-                'public/lib/ngDialog/ngDialog-custom-width.css'
+                'public/lib/ngDialog/ngDialog-custom-width.css',
+                'public/lib/fullcalendar/dist/fullcalendar.min.css',
+                'public/lib/fullcalendar/dist/fullcalendar.print.css',
+                'public/lib/angular-datepicker/dist/index.min.css'
+
 
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/fullcalendar/dist/moment.min.js',
 				'public/lib/angular/angular.js',
-				'public/lib/angular-resource/angular-resource.js', 
+				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
 				'public/lib/angular-touch/angular-touch.js', 
@@ -31,7 +37,14 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-      			'public/lib/ngDialog/ngDialog.min.js'
+      			'public/lib/ngDialog/ngDialog.min.js',
+                'public/lib/angular-ui-calendar/src/calendar.js',
+      			'public/lib/fullcalendar/dist/fullcalendar.js',
+      			'public/lib/fullcalendar/dist/gcal.js',
+      			'public/lib/fullcalendar/dist/lang/zh-cn.js',
+                'public/lib/angular-datepicker/dist/index.js'
+//                'public/lib/angular-datepicker/dist/index.min.js'
+
 			]
 		},
 		css: [

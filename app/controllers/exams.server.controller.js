@@ -36,7 +36,7 @@ exports.read = function(req, res) {
 /**
  * Update a exam
  */
-exports.update = function(req, res) {
+exports.update = function(req, res,next) {
 	var exam = req.exam;
 
     exam = _.extend(exam, req.body);
@@ -47,7 +47,13 @@ exports.update = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(exam);
+            Exam.findById(exam._id).populate('exam_questions').exec(function(err, exam2) {
+                if (err) return next(err);
+                if (!exam2) return next(new Error('Failed to load exam ' + id));
+
+                res.json(exam2);
+            });
+
 		}
 	});
 };
@@ -91,7 +97,7 @@ exports.list = function(req, res) {
  */
 exports.examByID = function(req, res, next, id) {
 	//Exam.findById(id).populate('user', 'displayName').exec(function(err, article) {
-	Exam.findById(id).exec(function(err, exam) {
+	Exam.findById(id).populate('exam_questions').exec(function(err, exam) {
 		if (err) return next(err);
 		if (!exam) return next(new Error('Failed to load exam ' + id));
 		req.exam = exam;
