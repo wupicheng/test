@@ -39,7 +39,7 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
 	var question = req.question;
-
+    console.log('questions server update...'+req.query.examId);
     question = _.extend(question, req.body);
 
     question.save(function(err) {

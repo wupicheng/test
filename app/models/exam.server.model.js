@@ -43,6 +43,10 @@ var ExamSchema = new Schema({
             type: Schema.ObjectId,
             ref: 'Question'
         }]
+    },
+    exam_isstart:{
+        type:Boolean,
+        default:false
     }
 
 });

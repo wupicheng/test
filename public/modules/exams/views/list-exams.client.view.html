@@ -3,18 +3,18 @@
 		<h1>Exams</h1>
 	</div>
 	<div class="list-group">
-		<a data-ng-repeat="exam in exams" data-ng-href="#!/exams/{{exam._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="exam.exam_name | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="exam.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="exam.exam_name"></h4>
-			<p class="list-group-item-text" data-ng-bind="exam.exam_password"></p>
-		</a>
+        <div data-ng-repeat="exam in exams">
+
+                <h4 class="list-group-item-heading" data-ng-bind="exam.exam_name"></h4>
+
+            <a class="btn btn-success" data-ng-href="#!/exams/{{exam._id}}">编辑试卷</a>
+            <a class="btn btn-success" ng-show="!exam.exam_isstart" ng-click="startExam(exam)">启动考试</a>
+            <a class="btn btn-danger" ng-show="exam.exam_isstart" ng-click="endExam(exam)">终止考试</a>
+            <a class="btn btn-danger" ng-click="remove(exam)">删除试卷</a>
+
+        </div>
+
 	</div>
-	<div class="alert alert-warning text-center" data-ng-if="exams.$resolved && !exams.length">
-		No exams yet, why don't you <a href="/#!/exams/create">create one</a>?
-	</div>
+
+
 </section>

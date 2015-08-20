@@ -184,6 +184,56 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
         $scope.dowork = function (value) {
             return  String.fromCharCode(value);
         };
+        $scope.question_e_show=false;
+        $scope.editQuestion=function(id){
+
+
+             //console.log($event.target);
+
+           var div_e= angular.element('#div_e');
+           var div_id= angular.element('#'+id);
+            //div_id.appendappend(div_e);
+            div_id.after(div_e);
+           // $scope.question_e_show=true;
+             console.log(div_e[0].style);
+             console.log(div_e.left);
+        };
+        $scope.update2 = function() {
+            var exam = $scope.exam;
+
+            exam.$update(function() {
+                $location.path('exams');
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
+        //完成试卷编辑  做保存
+        $scope.endExamEdit=function(){
+            $scope.update2();
+
+        };
+        $scope.startExam=function(exam){
+
+            exam.exam_isstart=true;
+            exam.$update(function() {
+                $location.path('exams');
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+
+        };
+        $scope.endExam=function(exam){
+
+            exam.exam_isstart=false;
+            exam.$update(function() {
+                $location.path('exams');
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+
+        };
+
+
 
 
 	}

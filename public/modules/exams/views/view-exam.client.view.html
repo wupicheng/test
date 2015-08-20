@@ -1,6 +1,7 @@
 <section data-ng-controller="ExamsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="exam.exam_name"></h1>
+        <a class="btn btn-success" ng-click="endExamEdit()">完成试卷</a>
 	</div>
 	<!--<div class="pull-right" data-ng-show="authentication.user._id == exam.user._id">-->
 	<!--<div class="pull-right" >-->
@@ -126,21 +127,25 @@
     <div class="controls" data-ng-repeat="question in exam.exam_questions">
         <div class="" id="question.question_title">
             <span data-ng-bind="'第'+($index+1)+'题'"></span>题目：<span class="content" data-ng-bind="question.question_title"></span>
-            <a class="btn btn-primary" href="/#!/questions/{{question._id}}/edit">
+            <a class="btn btn-primary" href="/#!/questions/{{question._id}}/edit/exam/{{exam._id}}">
                 <i class="glyphicon glyphicon-edit"></i>
             </a>
             <a class="btn btn-primary" data-ng-click="removeOne(question._id)">
                 <!--<a class="btn btn-primary" href="/#!/questions/{{question._id}}/delete">-->
                 <i class="glyphicon glyphicon-trash"></i>
             </a>
+            <!--<a class="btn btn-primary" ng-click="editQuestion(question._id)" >-->
+                <!--<i class="glyphicon glyphicon-alert"></i>-->
+            <!--</a>-->
+            <div id="question._id"></div>
         </div>
         <div class="list-group" id="question.question_choices">
             <div class="list-column" data-ng-repeat="choice in question.question_choices">
                 <!--<span>{{choice.title}}</span>-->
                 <span data-ng-bind="dowork($index+65)"></span>
-                <input type="checkbox" ng-disabled="true" ng-checked="choice.istrue" cols="10"
+                <input type="checkbox" ng-disabled="flase" ng-checked="choice.istrue" cols="10"
                        ng-model="choice.istrue">
-                <span type="text" class="form-inline" cols="20" data-ng-bind="choice.title"></span>
+                <span type="text" class="form-inline" cols="20" data-ng-bind="choice.title" ></span>
 
             </div>
 
@@ -156,4 +161,38 @@
     </div>
 
     <!--展示所有考试题目结束-->
+    <!--&lt;!&ndash; 修改考试题开始&ndash;&gt;-->
+    <!--&lt;!&ndash;<style>&ndash;&gt;-->
+        <!--&lt;!&ndash;.question_e_left{&ndash;&gt;-->
+            <!--&lt;!&ndash;left:'{{question_e_left}}';&ndash;&gt;-->
+
+        <!--&lt;!&ndash;}&ndash;&gt;-->
+    <!--&lt;!&ndash;</style>&ndash;&gt;-->
+    <!--<div ng-show="false" id="div_e">-->
+        <!--<div class="" id="question_e.question_title">-->
+            <!--<span data-ng-bind="'第'+($index+1)+'题'"></span>题目：<span class="content" data-ng-bind="question_e.question_title"></span>-->
+            <!--<a class="btn btn-primary" href="/#!/questions/{{question._id}}/edit">-->
+                <!--<i class="glyphicon glyphicon-edit"></i>-->
+            <!--</a>-->
+            <!--<a class="btn btn-primary" data-ng-click="removeOne(question._id)">-->
+                <!--&lt;!&ndash;<a class="btn btn-primary" href="/#!/questions/{{question._id}}/delete">&ndash;&gt;-->
+                <!--<i class="glyphicon glyphicon-trash"></i>-->
+            <!--</a>-->
+            <!--<a class="btn btn-primary" ng-click="editQuestion($event)" >-->
+                <!--<i class="glyphicon glyphicon-alert"></i>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="list-group" id="question_e.question_choices">-->
+            <!--<div class="list-column" data-ng-repeat="choice in question_e.question_choices">-->
+                <!--&lt;!&ndash;<span>{{choice.title}}</span>&ndash;&gt;-->
+                <!--<span data-ng-bind="dowork($index+65)"></span>-->
+                <!--<input type="checkbox" ng-disabled="flase" ng-checked="choice.istrue" cols="10"-->
+                       <!--ng-model="choice.istrue">-->
+                <!--<span type="text" class="form-inline" cols="20" data-ng-bind="choice.title" ></span>-->
+
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; 修改考试题结束&ndash;&gt;-->
 </section>

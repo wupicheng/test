@@ -66,6 +66,15 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
                 $scope.error = errorResponse.data.message;
             });
         };
+        $scope.update2 = function () {
+            var question = $scope.question;
+           var  examId=$scope.examId;
+            question.$update(function () {
+                $location.path('exams/' + examId);
+            }, function (errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
 
         $scope.find = function () {
             $scope.questions = Questions.query();
@@ -75,6 +84,14 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
             $scope.question = Questions.get({
                 questionId: $stateParams.questionId
             });
+        };
+        $scope.examId='';
+        $scope.findOne2 = function () {
+            $scope.question = Questions.get({
+                questionId: $stateParams.questionId
+            });
+            $scope.examId=$stateParams.examId;
+            console.log($stateParams);
         };
         $scope.findOneEdit = function () {
             $scope.directions = Directions.query();
