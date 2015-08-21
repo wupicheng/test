@@ -47,6 +47,12 @@ var ExamSchema = new Schema({
     exam_isstart:{
         type:Boolean,
         default:false
+    },
+    exam_admin:{//试卷的归属者。谁是出卷人，组内可以加入用户名。
+        type: [{
+            type: String
+        }],
+        default: ['admin']
     }
 
 });

@@ -17,14 +17,20 @@ var StuSchema = new Schema({
 	stu_password: {
 		type: String,
 		default: '',
-		trim: true,
-		required: 'password cannot be blank'
+		trim: true
+
 	},
 	stu_birthday: {
-		type: Date,
+        type: Date,
         default: Date.now,
-		trim: true
-	}
+        trim: true
+    },
+    stu_idcard: { //身份证号码
+        type: String,
+        default: '',
+        trim: true,
+        required: '身份证号码不能为空'
+    }
 
 });
 

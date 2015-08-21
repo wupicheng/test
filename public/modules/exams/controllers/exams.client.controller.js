@@ -7,9 +7,10 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
 		$scope.create = function() {
 			var exam = new Exams({
 				exam_name: this.exam_name,
-                exam_password: this.exam_password
+                exam_password: this.exam_password,
+                exam_admin:$scope.authentication.user.username
 			});
-
+             console.log($scope.authentication.user.username);
 			exam.$save(function(response) {
 				$location.path('exams/' + response._id);
 

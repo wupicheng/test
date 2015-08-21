@@ -7,14 +7,14 @@ angular.module('stus').controller('StusController', ['$scope', '$stateParams', '
 		$scope.create = function() {
 			var stu = new Stus({
 				stu_name: this.stu_name,
-                stu_password: this.stu_password
+                stu_idcard: this.stu_idcard
 			});
 
 			stu.$save(function(response) {
-				$location.path('stus/' + response._id);
+				$location.path('stus/' + response._id+'/edit');
 
-				$scope.stu_name = '';
-				$scope.stu_password = '';
+				$scope.stu_idcard = '';
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

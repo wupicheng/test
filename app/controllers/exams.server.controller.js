@@ -49,7 +49,7 @@ exports.update = function(req, res,next) {
 		} else {
             Exam.findById(exam._id).populate('exam_questions').exec(function(err, exam2) {
                 if (err) return next(err);
-                if (!exam2) return next(new Error('Failed to load exam ' + id));
+                if (!exam2) return next(new Error('Failed to load exam ' + exam._id));
 
                 res.json(exam2);
             });

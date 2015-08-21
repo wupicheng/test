@@ -38,7 +38,7 @@ angular.module('users').run(['Menus',
         Menus.addMenuItem('topbar', '账户管理', 'users', 'dropdown', '/users(/create)?',false,['admin']);
         //Menus.addSubMenuItem('topbar', 'exams', '未完成考试', 'exams');
         Menus.addSubMenuItem('topbar', 'users', '所有账户', 'users/listAllUsers',1);
-        Menus.addSubMenuItem('topbar', 'users', '新建账户', 'users/examisdone',2);
+        Menus.addSubMenuItem('topbar', 'users', '新建账户', 'users/create',2);
 
         Menus.addSubMenuItem('topbar', 'users', '', '####',3,false);
         Menus.addSubMenuItem('topbar', 'users', '所有学生', 'stus',4);
