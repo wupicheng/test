@@ -1,92 +1,59 @@
 <section data-ng-controller="StusController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1>编辑学生信息</h1>
-	</div>
-	<div class="col-md-12">
-		<form name="stuForm" class="form-inline" data-ng-submit="update(stuForm.$valid)" novalidate>
-			<fieldset>
+    <div class="page-header">
+        <h1>编辑学生信息</h1>
+    </div>
 
-                <!--<div class="form-group" ng-class="{ 'has-error' : submitted && stuForm.stu_name.$invalid}">-->
-                    <!--<label class="control-label" for="stu_name">姓名</label>-->
-                    <!--<div class="controls">-->
-                        <!--<input name="title" type="text" data-ng-model="stu.stu_name" id="stu_name" class="form-control" placeholder="stu_name" required>-->
-                    <!--</div>-->
-                    <!--<div ng-show="submitted && stuForm.stu_name.$invalid" class="help-block">-->
-                        <!--<p ng-show="stuForm.stu_name.$error.required" class="text-danger">stu_name is required</p>-->
-                    <!--</div>-->
-                <!--</div>-->
+    <form name="stuForm" class="form-horizontal" data-ng-submit="update(stuForm.$valid)" novalidate>
+        <fieldset class="col-sm-6">
 
+            <div class="panel panel-primary">
 
-
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">面板标题</h3>
-            </div>
-            <div class="panel-body">
-                这是一个基本的面板
-            </div>
-            <table class="table">
-                <!--<th>产品</th><th>价格 </th><th>产品</th><th>价格 </th>-->
-                <tr>
-                    <td>
-                        <label class="control-label" for="stu_name">姓名</label>
-                    </td>
-
-                    <td>
-                        <input name="stu_name"  class="form-control col-lg-10" type="text" data-ng-model="stu.stu_name" id="stu_name"  required>
-                    </td>
-                    <td>
-                        <label class="control-label" for="stu_name">性别</label>
-                    </td>
-                    <td>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="stu_sex" id="optionsRadios3"
-                                   value="option1" checked> 男
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="stu_sex" id="optionsRadios4"
-                                   value="option2"> 女
-                        </label>
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <td>
-                        <label class="control-label" for="stu_name">电话</label>
-                    </td>
-
-                    <td>
-                        <input name="stu_name" class="form-control" type="text" data-ng-model="stu.stu_name" id="stu_phone"  required>
-                    </td>
-                    <td>
-                        <label class="control-label" for="stu_name">地址</label>
-                    </td>
-
-                    <td>
-                        <input name="stu_name" class="form-control" type="text" data-ng-model="stu.stu_name" id="stu_address"  required>
-                    </td>
-                </tr>
-
-            </table>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading">面板标题</div>
-            <table class="table">
-                <th>产品</th><th>价格 </th>
-                <tr><td>产品 A</td><td>200</td></tr>
-                <tr><td>产品 B</td><td>400</td></tr>
-            </table>
-        </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">基本信息</h3>
+                </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
                 </div>
-                <div data-ng-show="error" class="text-danger">
-                    <strong data-ng-bind="error"></strong>
+                <div class="form-group">
+                    <label for="stu_idcard" class="col-sm-3 control-label">身份证号码</label>
+                    <div class="col-sm-8">
+                        <div  data-ng-bind="stu.stu_idcard" id="stu_idcard" ></div>
+                    </div>
                 </div>
-            </fieldset>
-        </form>
-	</div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-3 control-label">姓名</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="firstname"
+                               placeholder="请输入名字">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-3 control-label">姓</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="lastname"
+                               placeholder="请输入姓">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   <div class="col-sm-2 col-sm-offset-2">
+                       <input type="submit" value="Update" class="btn btn-default">
+                   </div>
+
+                    <div data-ng-show="error" class="text-danger">
+                        <strong data-ng-bind="error"></strong>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </fieldset>
+    </form>
+
 </section>
