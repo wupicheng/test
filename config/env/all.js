@@ -42,7 +42,8 @@ module.exports = {
       			'public/lib/fullcalendar/dist/fullcalendar.js',
       			'public/lib/fullcalendar/dist/gcal.js',
       			'public/lib/fullcalendar/dist/lang/zh-cn.js',
-                'public/lib/angular-datepicker/dist/index.js'
+      			'public/lib/fullcalendar/dist/lang/zh-cn.js',
+                'public/lib/ng-file-upload/ng-file-upload-all.min.js'
 //                'public/lib/angular-datepicker/dist/index.min.js'
 
 			]

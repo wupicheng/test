@@ -15,6 +15,7 @@
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
     "angular-ui-calendar": "~1.0.1",
-    "angular-datepicker": "~1.0.12"
+    "angular-datepicker": "~1.0.12",
+    "ng-file-upload": "~7.0.13"
   }
 }

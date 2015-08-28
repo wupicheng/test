@@ -3,57 +3,125 @@
         <h1>编辑学生信息</h1>
     </div>
 
-    <form name="stuForm" class="form-horizontal" data-ng-submit="update(stuForm.$valid)" novalidate>
-        <fieldset class="col-sm-6">
+    <div class="row">
 
+
+        <fieldset class="col-sm-6">
+            <form name="stuForm" class="form-horizontal" data-ng-submit="update(stuForm.$valid)" novalidate>
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">基本信息</h3>
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+                        <label for="stu_idcard" class="col-sm-3 control-label text-left">身份证号码</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" ng-disabled="true" class="form-control" id="stu_idcard"
+                                   data-ng-bind="stu.stu_idcard">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-3 control-label text-left">姓名</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="firstname"
+                                   placeholder="请输入名字">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname" class=" col-sm-3 control-label ">姓
+                            <!--<p class="text-left">姓</p>-->
+                        </label>
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="lastname"
+                                   placeholder="请输入姓">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 col-sm-offset-2">
+                            <input type="submit" value="Update" class="btn btn-default">
+                        </div>
+
+                        <div data-ng-show="error" class="text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </form>
+        </fieldset>
+
+
+        <fieldset class="col-sm-6">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">基本信息</h3>
+                    <h3 class="panel-title">照片</h3>
                 </div>
+                <div class="panel-body">
 
-                <div class="form-group">
-                </div>
-                <div class="form-group">
-                    <label for="stu_idcard" class="col-sm-3 control-label">身份证号码</label>
-                    <div class="col-sm-8">
-                        <div  data-ng-bind="stu.stu_idcard" id="stu_idcard" ></div>
+                    <div class="panel panel-danger col-sm-4">
+                        <div class="panel-body">
+                            <!--<img src="modules/stus/views/img/logo.jpg"-->
+                            <!--class="img-rounded">-->
+                            <div class="col-sm-2">
+                                <img ngf-src="f" ngf-background="file" >
+                            </div>
+
+
+                        </div>
+                        <div class="">
+                            <button type="file" ngf-select="uploadFiles($file)"
+                                    accept="image/*" ngf-max-height="1000" ngf-max-size="200MB">
+                                Select File
+                            </button>
+                            <br><br>
+                            File:
+                            <div style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+                           <span class="progress" ng-show="f.progress >= 0">
+                           <div style="width:{{f.progress}}%"   ng-bind="f.progress + '%'"></div>
+                           </span>
+                            </div>
+                            {{errorMsg}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+
+                    <div class="form-group">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="firstname" class="col-sm-3 control-label">姓名</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="firstname"
-                               placeholder="请输入名字">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="lastname" class="col-sm-3 control-label">姓</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="lastname"
-                               placeholder="请输入姓">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                   <div class="col-sm-2 col-sm-offset-2">
-                       <input type="submit" value="Update" class="btn btn-default">
-                   </div>
-
-                    <div data-ng-show="error" class="text-danger">
-                        <strong data-ng-bind="error"></strong>
-                    </div>
-                </div>
-
-
             </div>
-
-
-
-
-
         </fieldset>
-    </form>
+
+    </div>
+    <div class="row">
+        <fieldset class="col-sm-6">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">家庭信息</h3>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col-sm-6">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">家庭信息</h3>
+                </div>
+            </div>
+        </fieldset>
+    </div>
 
 </section>

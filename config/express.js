@@ -21,8 +21,8 @@ var fs = require('fs'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
-
+	path = require('path'),
+    multipart = require('connect-multiparty');
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
@@ -49,7 +49,9 @@ module.exports = function(db) {
         res.locals.url = req.protocol + '://' + req.headers.host + req.url;
 		next();
 	});
-
+    app.use(multipart({
+        uploadDir: './public/upload'
+    }));
 	// Should be placed before express.static
 	app.use(compress({
 		filter: function(req, res) {
