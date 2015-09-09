@@ -1,13 +1,18 @@
 'use strict';
 
-angular.module('stus').controller('StusController', ['$scope','$timeout', '$stateParams', '$location', 'Authentication', 'Stus','Upload',
+angular.module('stus').controller('StusController', ['$scope', '$stateParams', '$location', 'Authentication', 'Stus','Upload','$timeout',
 	function($scope, $stateParams, $location, Authentication, Stus,Upload,$timeout) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
+            //var stu_img_path=new String(this.stu_img);
+
+
+           // var img_path= stu_img_path.substr(stu_img_path.indexOf("\\"));
 			var stu = new Stus({
 				stu_name: this.stu_name,
                 stu_idcard: this.stu_idcard
+
 			});
 
 			stu.$save(function(response) {
@@ -38,7 +43,9 @@ angular.module('stus').controller('StusController', ['$scope','$timeout', '$stat
 
 		$scope.update = function() {
 			var stu = $scope.stu;
-
+            var stu_img_path=new String($scope.stu.stu_img);
+            var img_path= stu_img_path.substr(stu_img_path.indexOf("\\"));
+            stu.stu_img=img_path;
 			stu.$update(function() {
 				$location.path('stus/' + stu._id);
 			}, function(errorResponse) {
@@ -54,6 +61,12 @@ angular.module('stus').controller('StusController', ['$scope','$timeout', '$stat
 			$scope.stu = Stus.get({
 				stuId: $stateParams.stuId
 			});
+            $scope.f=$scope.stu.stu_img;
+//            var img1= angular.element('#img1');
+//           img1[0].src=$scope.stu.stu_img;
+            console.log($scope.stu);
+            console.log($scope.f);
+         //   console.log(img1[0].src);
 		};
 
 //        $scope.$watch('file', function (file) {
@@ -78,16 +91,22 @@ angular.module('stus').controller('StusController', ['$scope','$timeout', '$stat
 
         $scope.uploadFiles = function(file) {
             $scope.f = file;
+            $scope.d=file;
             if (file && !file.$error) {
                 file.upload = Upload.upload({
                     //url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-                    url: '/uploads',
+                    url: '/imguploads',
                     file: file
                 });
 
                 file.upload.then(function (response) {
                     $timeout(function() {
                         file.result = response.data;
+                        var da=response.data;
+                        var dapath=da.path;
+                        var img_path= dapath.substr(dapath.indexOf("\\"));
+                        $scope.f=img_path;
+                      $scope.stu.stu_img=img_path;
                     });
                 }, function (response) {
                     if (response.status > 0)

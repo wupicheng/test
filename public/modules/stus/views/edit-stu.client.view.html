@@ -21,14 +21,14 @@
 
                         <div class="col-sm-8">
                             <input type="text" ng-disabled="true" class="form-control" id="stu_idcard"
-                                   data-ng-bind="stu.stu_idcard">
+                                   data-ng-model="stu.stu_idcard">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="firstname" class="col-sm-3 control-label text-left">姓名</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="firstname"
+                            <input type="text" data-ng-model="stu.stu_name" class="form-control" id="firstname"
                                    placeholder="请输入名字">
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                             <!--<img src="modules/stus/views/img/logo.jpg"-->
                             <!--class="img-rounded">-->
                             <div class="col-sm-2">
-                                <img ngf-src="f" ngf-background="file" >
+                                <img id="img1" style="width: 120px;height: 160px" data-ng-model="stu.stu_img" ngf-src="stu.stu_img" ngf-background="file" >
                             </div>
 
 
@@ -86,7 +86,7 @@
                             </button>
                             <br><br>
                             File:
-                            <div style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+                            <div style="font:smaller">{{d.name}} {{d.$error}} {{d.$errorParam}}
                            <span class="progress" ng-show="f.progress >= 0">
                            <div style="width:{{f.progress}}%"   ng-bind="f.progress + '%'"></div>
                            </span>

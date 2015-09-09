@@ -30,6 +30,10 @@ var StuSchema = new Schema({
         default: '',
         trim: true,
         required: '身份证号码不能为空'
+    },stu_img:{
+        type:String,
+        default:'img\\person.gif',
+        trim:true
     }
 
 });
