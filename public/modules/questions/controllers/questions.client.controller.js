@@ -126,7 +126,7 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
         $scope.findBatch=function(){
 
             $scope.question=new Questions();
-            $scope.question.question_choices=new Array();
+            $scope.question.question_choices=[];
             $scope.question.question_title='';
             $scope.question.question_type='OC';
         };
@@ -145,7 +145,7 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
 
         $scope.initdirection = function () {
             $scope.directions = Directions.query();
-            $scope.question_choices = new Array();
+            $scope.question_choices =[];
 
         };
         $scope.addchoice = function () {
@@ -173,7 +173,7 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
             var o = $scope.textContent;
             var arrays = o.split('\n');
             //alert(arrays);
-            var choices = new Array();
+            var choices = [];
             for (var n = 1; n < arrays.length; n++) {
                 choices.push({title: arrays[n], istrue: false});
             }
@@ -209,7 +209,7 @@ angular.module('questions').controller('QuestionsController', ['$scope', '$state
                 $scope.question.question_title = '';
                 $scope.question.question_answer = '';
                 $scope.question.question_created = '';
-                $scope.question.question_choices=new Array();
+                $scope.question.question_choices=[];
                 $scope.question.question_title='';
                 $scope.question.question_type='OC';
                 $scope.textContent='';

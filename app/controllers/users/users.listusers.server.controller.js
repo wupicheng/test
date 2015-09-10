@@ -83,14 +83,14 @@ exports.createx = function (req, res) {
     user.save(function (err) {
         res.header('Access-Control-Allow-Origin', '*');
         return  res.json(user);
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-
-            res.json(user);
-        }
+//        if (err) {
+//            return res.status(400).send({
+//                message: errorHandler.getErrorMessage(err)
+//            });
+//        } else {
+//
+//            res.json(user);
+//        }
     });
 };
 exports.userByName = function (req, res, next, userName) {

@@ -123,7 +123,7 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
             var o = $scope.textContent;
             var arrays = o.split('\n');
             //alert(arrays);
-            var choices = new Array();
+            var choices = [];
             for (var n = 1; n < arrays.length; n++) {
                 choices.push({title: arrays[n], istrue: false});
             }
@@ -144,7 +144,7 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
                 question_desc: $scope.questionnew.question_desc,
                 question_created: Date.now,
                 question_choices: $scope.questionnew.question_choices,
-                question_answer: $scope.questionnew.question_answer,
+                question_answer: $scope.questionnew.question_answer
                 //question_type:$scope.questionnew.question_type
                 //point: this.point._id
                 //question_created:this.question_created
@@ -160,7 +160,7 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
                 $scope.questionnew.question_title = '';
                 $scope.questionnew.question_answer = '';
                 $scope.questionnew.question_created = '';
-                $scope.questionnew.question_choices=new Array();
+                $scope.questionnew.question_choices=[];
                 $scope.questionnew.question_title='';
                // $scope.questionnew.question_type='OC';
                 $scope.textContent='';

@@ -43,8 +43,8 @@ angular.module('stus').controller('StusController', ['$scope', '$stateParams', '
 
 		$scope.update = function() {
 			var stu = $scope.stu;
-            var stu_img_path=new String($scope.stu.stu_img);
-            var img_path= stu_img_path.substr(stu_img_path.indexOf("\\"));
+            var stu_img_path=String($scope.stu.stu_img);
+            var img_path= stu_img_path.substr(stu_img_path.indexOf('\\'));
             stu.stu_img=img_path;
 			stu.$update(function() {
 				$location.path('stus/' + stu._id);
@@ -104,7 +104,7 @@ angular.module('stus').controller('StusController', ['$scope', '$stateParams', '
                         file.result = response.data;
                         var da=response.data;
                         var dapath=da.path;
-                        var img_path= dapath.substr(dapath.indexOf("\\"));
+                        var img_path= dapath.substr(dapath.indexOf('\\'));
                         $scope.f=img_path;
                       $scope.stu.stu_img=img_path;
                     });
