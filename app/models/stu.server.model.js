@@ -18,7 +18,6 @@ var StuSchema = new Schema({
 		type: String,
 		default: '',
 		trim: true
-
 	},
 	stu_birthday: {
         type: Date,
@@ -33,6 +32,38 @@ var StuSchema = new Schema({
     },stu_img:{
         type:String,
         default:'img\\person.gif',
+        trim:true
+    },stu_phone:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_address:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_origin:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_jianli:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_parent_dad_name:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_parent_dad_phone:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_parent_mum_name:{
+        type:String,
+        default:'',
+        trim:true
+    },stu_parent_mum_phone:{
+        type:String,
+        default:'',
         trim:true
     }
 

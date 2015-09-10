@@ -1,105 +1,115 @@
 <section data-ng-controller="StusController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1>编辑学生信息</h1>
-    </div>
+<div class="page-header">
+    <h1>编辑学生信息</h1>
+</div>
+<div class="alert alert-warning" ng-show="error">
 
-    <div class="row">
+    <strong>{{error}}</strong>
+</div>
+
+<div class="row">
 
 
-        <fieldset class="col-sm-6">
-            <form name="stuForm" class="form-horizontal" data-ng-submit="update(stuForm.$valid)" novalidate>
-                <div class="panel panel-primary">
+    <fieldset class="col-sm-6">
+        <form name="stuForm_base" class="form-horizontal" data-ng-submit="update(stuForm_base.$valid)" novalidate>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
 
-                    <div class="panel-heading">
-                        <h3 class="panel-title">基本信息</h3>
-                    </div>
+                        <h3 class="panel-title">
+                            基本信息
+                             <!--<span data-ng-show="error" class="text-danger">-->
+                                <!--<span data-ng-bind="error"></span>-->
+                            <!--</span>-->
+                            <input type="submit" value="保存" class="btn btn-success btn-xs pull-right" />
 
-                    <div class="form-group">
-                    </div>
-                    <div class="form-group">
-                        <label for="stu_idcard" class="col-sm-3 control-label text-left">身份证号码</label>
 
-                        <div class="col-sm-8">
-                            <input type="text" ng-disabled="true" class="form-control" id="stu_idcard"
-                                   data-ng-model="stu.stu_idcard">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstname" class="col-sm-3 control-label text-left">姓名</label>
+                        </h3>
 
-                        <div class="col-sm-8">
-                            <input type="text" data-ng-model="stu.stu_name" class="form-control" id="firstname"
-                                   placeholder="请输入名字">
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="optionsRadios3" class=" col-sm-3 control-label ">性别
-                            <!--<p class="text-left">姓</p>-->
-                        </label>
 
-                        <div class="col-sm-8">
-                            <div>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="stu_sex" id="optionsRadios3"
-                                           value="option1" checked>男
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="stu_sex" id="optionsRadios4"
-                                           value="option2"> 女
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="stu_phone" class="col-sm-3 control-label text-left">电话号码</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" data-ng-model="stu.stu_phone" class="form-control" id="stu_phone"
-                                   placeholder="手机">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="stu_address" class="col-sm-3 control-label text-left">家庭住址</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" data-ng-model="stu.stu_address" class="form-control" id="stu_address"
-                                   placeholder="家庭住址">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="stu_origin" class="col-sm-3 control-label text-left">籍贯</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" data-ng-model="stu.stu_address" class="form-control" id="stu_origin"
-                                   placeholder="籍贯">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-2 col-sm-offset-2">
-                            <input type="submit" value="Update" class="btn btn-default">
-                        </div>
-
-                        <div data-ng-show="error" class="text-danger">
-                            <strong data-ng-bind="error"></strong>
-                        </div>
-                    </div>
-
+                    <!--<span class="">-->
+                        <!--<a type="submit" class="badge">保存</a>-->
+                    <!--</span>-->
 
                 </div>
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <label for="stu_idcard" class="col-sm-3 control-label text-left">身份证号码</label>
 
-            </form>
-        </fieldset>
+                    <div class="col-sm-8">
+                        <input type="text" ng-disabled="true" class="form-control" id="stu_idcard"
+                               data-ng-model="stu.stu_idcard">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-3 control-label text-left">姓名</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" data-ng-model="stu.stu_name" class="form-control" id="firstname"
+                               placeholder="请输入名字">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="optionsRadios3" class=" col-sm-3 control-label ">性别
+                        <!--<p class="text-left">姓</p>-->
+                    </label>
+
+                    <div class="col-sm-8">
+                        <div>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="stu_sex" id="optionsRadios3"
+                                       value="option1" checked>男
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="stu_sex" id="optionsRadios4"
+                                       value="option2"> 女
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stu_phone" class="col-sm-3 control-label text-left">电话号码</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" data-ng-model="stu.stu_phone" class="form-control" id="stu_phone"
+                               placeholder="手机">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stu_address" class="col-sm-3 control-label text-left">家庭住址</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" data-ng-model="stu.stu_address" class="form-control" id="stu_address"
+                               placeholder="家庭住址">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stu_origin" class="col-sm-3 control-label text-left">籍贯</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" data-ng-model="stu.stu_address" class="form-control" id="stu_origin"
+                               placeholder="籍贯">
+                    </div>
+                </div>
+                <div class="form-group">
+
+                </div>
+            </div>
+        </form>
+    </fieldset>
 
 
-        <fieldset class="col-sm-6">
+    <fieldset class="col-sm-6">
+        <form name="stuForm_img" class="form-horizontal" data-ng-submit="update(stuForm_img.$valid)">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">照片</h3>
+                    <h3 class="panel-title">照片
+                        <input type="submit" value="保存" class="btn btn-success btn-xs pull-right" />
+                        <!--<a type="submit" href="#" class="btn btn-success btn-xs pull-right">保存</a>-->
+                    </h3>
                 </div>
                 <div class="panel-body">
 
@@ -119,15 +129,15 @@
                                     <br>
                                     <button type="file" ngf-select="uploadFiles($file)"
                                             accept="image/*" ngf-max-height="1000" ngf-max-size="200MB">
-                                       选择照片...
+                                        选择照片...
                                     </button>
                                     <br>
                                     {{errorMsg}}
                                     <!--File:-->
                                     <!--<div style="font:smaller">{{d.name}} {{d.$error}} {{d.$errorParam}}-->
-                           <!--<span class="progress" ng-show="d.progress >= 0">-->
-                           <!--<div style="width:{{f.progress}}%" ng-bind="d.progress + '%'"></div>-->
-                           <!--</span>-->
+                                    <!--<span class="progress" ng-show="d.progress >= 0">-->
+                                    <!--<div style="width:{{f.progress}}%" ng-bind="d.progress + '%'"></div>-->
+                                    <!--</span>-->
                                     <!--</div>-->
 
                                 </div>
@@ -141,26 +151,99 @@
                     </div>
                 </div>
             </div>
-        </fieldset>
+        </form>
+    </fieldset>
 
-    </div>
-    <div class="row">
-        <fieldset class="col-sm-6">
+</div>
+<div class="row">
+    <fieldset class="col-sm-6">
+        <form name="stuForm_home" class="form-horizontal" data-ng-submit="update(stuForm_home.$valid)">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">家庭信息</h3>
+                    <h3 class="panel-title">
+                        家庭信息
+                        <input type="submit" value="保存" class="btn btn-success btn-xs pull-right" />
+                        <!--<a type="submit" href="#" class="btn btn-success btn-xs pull-right">保存</a>-->
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="stu_parent_dad_name" class="col-sm-3 control-label text-left">父亲名字</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" data-ng-model="stu.stu_parent_dad_name" class="form-control"
+                                   id="stu_parent_dad_name"
+                                   placeholder="父亲姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stu_parent_dad_phone" class="col-sm-3 control-label text-left">父亲电话</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" data-ng-model="stu.stu_parent_dad_phone" class="form-control"
+                                   id="stu_parent_dad_phone"
+                                   placeholder="父亲电话">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stu_parent_mum_name" class="col-sm-3 control-label text-left">母亲名字</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" data-ng-model="stu.stu_parent_mum_name" class="form-control"
+                                   id="stu_parent_mum_name"
+                                   placeholder="母亲姓名">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stu_parent_mum_phone" class="col-sm-3 control-label text-left">母亲电话</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" data-ng-model="stu.stu_parent_mum_phone" class="form-control"
+                                   id="stu_parent_mum_phone"
+                                   placeholder="母亲电话">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </fieldset>
-        <fieldset class="col-sm-6">
+        </form>
+    </fieldset>
+    <fieldset class="col-sm-6">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">家庭照片</h3>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="row">
+    <fieldset class="col-sm-12">
+        <form name="stuForm_jianli" class="form-horizontal" data-ng-submit="update(stuForm_jianli.$valid)">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">家庭信息</h3>
+                    <h3 class="panel-title">个人简历
+                        <input type="submit" value="保存" class="btn btn-success btn-xs pull-right" />
+                        <!--<a type="submit" href="#" class="btn btn-success btn-xs pull-right">保存</a>-->
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="stu_jianli" class="col-sm-2  control-label text-right">个人简历</label>
+
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <textarea type="text" rows="12" data-ng-model="stu.stu_jianli" id="stu_jianli" class="form-control"  id="x"
+                                   placeholder="母亲电话">
+
+                            </textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </fieldset>
-    </div>
+        </form>
+    </fieldset>
 
+</div>
 </section>
