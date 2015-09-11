@@ -7,7 +7,7 @@
 
                 <h4 class="list-group-item-heading" data-ng-bind="exam.exam_name"></h4>
 
-            <a class="btn btn-success" data-ng-href="#!/exams/{{exam._id}}">编辑试卷</a>
+            <a class="btn btn-success" ng-show="!exam.exam_isstart" data-ng-href="#!/exams/{{exam._id}}">编辑试卷</a>
             <a class="btn btn-success" ng-show="!exam.exam_isstart" ng-click="startExam(exam)">启动考试</a>
             <a class="btn btn-danger" ng-show="exam.exam_isstart" ng-click="endExam(exam)">终止考试</a>
             <a class="btn btn-danger" ng-click="remove(exam)">删除试卷</a>

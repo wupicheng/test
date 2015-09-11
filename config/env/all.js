@@ -37,7 +37,7 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-               // 'public/lib/angular-datepicker/dist/index.min.js',
+                'public/lib/angular-datepicker/dist/index.min.js',
       			'public/lib/ngDialog/ngDialog.min.js',
                 'public/lib/angular-ui-calendar/src/calendar.js',
       			'public/lib/fullcalendar/dist/fullcalendar.js',

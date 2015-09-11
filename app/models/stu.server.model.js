@@ -13,7 +13,10 @@ var StuSchema = new Schema({
 	stu_name: {
 		type: String,
 		default: ''
-	},
+	},stu_sex:{
+      type:String,
+       default:''
+    },
 	stu_password: {
 		type: String,
 		default: '',
@@ -66,7 +69,6 @@ var StuSchema = new Schema({
         default:'',
         trim:true
     }
-
 });
 
 mongoose.model('Stu', StuSchema);
