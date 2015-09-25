@@ -47,10 +47,10 @@ angular.module('stus').controller('StusController', ['$scope', '$stateParams', '
             var img_path= stu_img_path.substr(stu_img_path.indexOf('\\'));
             stu.stu_img=img_path;
 			stu.$update(function() {
-                $scope.error="保存成功";
+                $scope.error='保存成功';
 				$location.path('stus/' + stu._id+'/edit');
                 $timeout(function(){
-                    $scope.error="";
+                    $scope.error='';
                 },3000);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;

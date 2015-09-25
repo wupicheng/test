@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
+var extend = require('mongoose-schema-extend');
 
 /**
  * Exam Schema
@@ -56,5 +57,8 @@ var ExamSchema = new Schema({
     }
 
 });
+var AnswerSchema = ExamSchema.extend({
 
+});
 mongoose.model('Exam', ExamSchema);
+mongoose.model('Answer', AnswerSchema);
