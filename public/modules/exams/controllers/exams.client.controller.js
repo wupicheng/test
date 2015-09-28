@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('exams').controller('ExamsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exams','Groups','Questions',
-	function($scope, $stateParams, $location, Authentication, Exams,Groups,Questions) {
+	function($scope, $stateParams, $location, Authentication, Exams,Groups,Questions,Answer) {
 		$scope.authentication = Authentication;
         $scope.showSelectGroup=false;
 		$scope.create = function() {
@@ -234,7 +234,27 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
 
         };
 
+        $scope.startAnswer=function (examId){
 
+            var answer=new Answer();
+
+             answer= Exams.get({
+                examId: examId
+
+             });
+            answer.exam=examId;
+            answer.user=$scope.user;
+
+            answer.$save(function(response) {
+                $location.path('answers/' + response._id);
+
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+
+
+
+        }
 
 
 	}

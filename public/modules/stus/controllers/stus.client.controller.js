@@ -124,5 +124,6 @@ angular.module('stus').controller('StusController', ['$scope', '$stateParams', '
                 });
             }
         };
+
 	}
 ]);

@@ -58,7 +58,14 @@ var ExamSchema = new Schema({
 
 });
 var AnswerSchema = ExamSchema.extend({
-
+    exam:{
+        type: Schema.ObjectId,
+        ref: 'Exam'
+    },
+    user:{
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
 });
 mongoose.model('Exam', ExamSchema);
 mongoose.model('Answer', AnswerSchema);
