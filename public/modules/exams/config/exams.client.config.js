@@ -10,7 +10,7 @@ angular.module('exams').run(['Menus',
 
 		Menus.addSubMenuItem('topbar', 'exams', '未完成考试', 'exams/examsisgoing');
 		Menus.addSubMenuItem('topbar', 'exams', '已结束考试', 'exams/examisdone');
-		//Menus.addSubMenuItem('topbar', 'exams', '已结束考试', 'exams/create');
+
 
         Menus.addMenuItem('topbar', '试卷管理', 'examsmanage', 'dropdown', '/exams(/create)?',false,['admin']);
         //Menus.addSubMenuItem('topbar', 'exams', '未完成考试', 'exams');
