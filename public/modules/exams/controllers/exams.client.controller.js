@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('exams').controller('ExamsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exams','Groups','Questions',
-	function($scope, $stateParams, $location, Authentication, Exams,Groups,Questions,Answer) {
+angular.module('exams').controller('ExamsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Exams','Groups','Questions','Answers',
+	function($scope, $stateParams, $location, Authentication, Exams,Groups,Questions,Answers) {
 		$scope.authentication = Authentication;
         $scope.showSelectGroup=false;
 		$scope.create = function() {
@@ -234,17 +234,97 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
 
         };
 
+
+//        function cloneAll(fromObj,toObj){
+//            for(var i in fromObj){
+//                if(typeof fromObj === 'object'){
+//                    toObj={};
+//                    cloneAll(fromObj,toObj);
+//                    continue;
+//                }
+//                toObj = fromObj;
+//            }
+//        }
+
+        /////////////////////////////////////
+
+        function clone(obj){
+            var o;
+            switch(typeof obj){
+                case 'undefined': break;
+                case 'string'   : o = obj + '';break;
+                case 'number'   : o = obj - 0;break;
+                case 'boolean'  : o = obj;break;
+                case 'object'   :
+                    if(obj === null){
+                        o = null;
+                    }else{
+                        if(obj instanceof Array){
+                            o = [];
+                            for(var i = 0, len = obj.length; i < len; i++){
+                                o.push(clone(obj[i]));
+                            }
+                        }else{
+                            o = {};
+                            for(var k in obj){
+                                o[k] = clone(obj[k]);
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    o = obj;break;
+            }
+            return o;
+        }
+
+        ///////////////////////////////////
+
         $scope.startAnswer=function (examId){
 
-            var answer=new Answer();
 
-             answer= Exams.get({
-                examId: examId
+             var  examold=new  Exams({});
+            examold= Exams.get({
+                'id': examId,'questions':'a'});
+            console.log(examold);
 
-             });
+            //console.log(a);
+
+            var answer=new Answers({
+            });
+            // answer= examold;
+            //answer=  clone(examold);
+         // var newobj=  angular.copy(examold);
+
+//            for(var p in examold)
+//            {
+//                var name=p;//属性名称
+//                var value=examold[p];//属性对应的值
+//                answer[name]=examold[p];
+//            }
+            // var answer=new Answers(JSON.stringify(examold));
+
+            //var txt=JSON.stringify(examold);
+
+            //var examnew= JSON.parse(txt);
+
+           //   console.log(examnew);
+          //  answer=angular.copy(examold);
+
+            //answer.exam_questions=examold.exam_questions;
+//            var  examold= Exams.get({
+//                examId: examId
+//
+//             });
+
+          //  angular.copy(examold,answer);
+
+            //var newObject = jQuery.extend(true, {}, examold);
+           // answer=newObject;
             answer.exam=examId;
             answer.user=$scope.user;
-
+            answer.exam_questions=examold['exam_questions'];
+            console.log(answer);
             answer.$save(function(response) {
                 $location.path('answers/' + response._id);
 
@@ -254,7 +334,7 @@ angular.module('exams').controller('ExamsController', ['$scope', '$stateParams',
 
 
 
-        }
+        };
 
 
 	}

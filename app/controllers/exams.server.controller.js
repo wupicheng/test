@@ -30,6 +30,7 @@ exports.create = function(req, res) {
  * Show the current exam
  */
 exports.read = function(req, res) {
+    console.log('exam server control read....');
 	res.json(req.exam);
 };
 
@@ -81,15 +82,31 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
     //Exam.find().sort('-created').populate('user', 'displayName').exec(function(err, exams) {
     //Exam.find().sort('-exam_name').exec(function(err, exams) {
-    Exam.find().exec(function(err, exams) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(exams);
-		}
-	});
+   if( req.query.questions==='a'){
+        console.log('exam list quesiont a ='+req.query.questions);
+        Exam.findById(req.query.id).populate('exam_questions').exec(function(err, exama) {
+           if (err) {
+               return res.status(400).send({
+                   message: errorHandler.getErrorMessage(err)
+               });
+           } else {
+               res.json(exama);
+           }
+       });
+   }else{
+       console.log('exam list  not question'+req.query.questions);
+       Exam.find().exec(function(err, exams) {
+           if (err) {
+               return res.status(400).send({
+                   message: errorHandler.getErrorMessage(err)
+               });
+           } else {
+               res.json(exams);
+           }
+       });
+   }
+
+
 };
 
 /**

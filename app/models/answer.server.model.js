@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 /**
  * Exam Schema
  */
-var ExamSchema = new Schema({
+var AnswerSchema = new Schema({
 	exam_name: {//试卷的名称 比如（ F17班2015年 期中考试）
 		type: String,
 		default: ''
@@ -41,9 +41,9 @@ var ExamSchema = new Schema({
     },
     exam_questions:{
         type: [{
-            type: Schema.ObjectId,
-            ref: 'Question'
-        }]
+            type: String
+        }],
+        default: []
     },
     exam_isstart:{
         type:Boolean,
@@ -54,18 +54,16 @@ var ExamSchema = new Schema({
             type: String
         }],
         default: ['admin']
+    },
+    exam:{
+        type: Schema.ObjectId,
+        ref: 'Exam'
+    },
+    user:{
+        type: Schema.ObjectId,
+        ref: 'User'
     }
 
 });
-//var AnswerSchema = ExamSchema.extend({
-//    exam:{
-//        type: Schema.ObjectId,
-//        ref: 'Exam'
-//    },
-//    user:{
-//        type: Schema.ObjectId,
-//        ref: 'User'
-//    }
-//});
-mongoose.model('Exam', ExamSchema);
-//mongoose.model('Answer', AnswerSchema);
+
+mongoose.model('Answer', AnswerSchema);
